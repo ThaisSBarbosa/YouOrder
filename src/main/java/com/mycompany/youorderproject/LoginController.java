@@ -51,6 +51,8 @@ public class LoginController implements Initializable {
         App.setRoot("novoCadastro");
     }
     
+    //teste
+    
     @FXML
     private void lblEsqueceuASenhaOnMouseClicked() throws IOException {
         Alert alert = new Alert(AlertType.INFORMATION);
