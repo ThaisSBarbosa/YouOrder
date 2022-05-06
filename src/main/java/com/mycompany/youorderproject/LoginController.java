@@ -51,7 +51,7 @@ public class LoginController implements Initializable {
         App.setRoot("novoCadastro");
     }
     
-    //teste
+    //outro teste
     
     @FXML
     private void lblEsqueceuASenhaOnMouseClicked() throws IOException {
