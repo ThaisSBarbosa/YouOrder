@@ -30,7 +30,7 @@
       <Label layoutX="343.0" layoutY="164.0" text="Nome" />
       <TextField layoutX="215.0" layoutY="181.0" prefHeight="25.0" prefWidth="295.0" />
       <Label layoutX="311.0" layoutY="222.0" text="Restrição Alimentar" />
-      <Button fx:id="btnRegistrar" layoutX="288.0" layoutY="317.0" mnemonicParsing="false" onMouseClicked="#btnRegistrarOnMouseClicked" prefHeight="25.0" prefWidth="149.0" text="Registrar">
+      <Button fx:id="btnRegistrar" layoutX="285.0" layoutY="323.0" mnemonicParsing="false" onMouseClicked="#btnRegistrarOnMouseClicked" prefHeight="25.0" prefWidth="149.0" text="Registrar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -39,5 +39,13 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
+      <Button fx:id="btnAjuda" layoutX="656.0" layoutY="34.0" mnemonicParsing="false" onMouseClicked="#btnAjudaOnMouseClicked" prefHeight="43.0" prefWidth="45.0" style="-fx-background-radius: 100px;" text="?">
+         <font>
+            <Font name="Franklin Gothic Heavy" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </Pane>

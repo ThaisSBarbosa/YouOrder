@@ -24,6 +24,8 @@ public class NovoCadastroController implements Initializable {
     private Button btnRegistrar;
     @FXML
     private Button btnVoltar;
+    @FXML
+    private Button btnAjuda;
 
     /**
      * Initializes the controller class.
@@ -45,6 +47,16 @@ public class NovoCadastroController implements Initializable {
     @FXML
     private void btnVoltarOnMouseClicked(MouseEvent event) throws IOException {
         App.setRoot("login");
+    }
+
+    @FXML
+    private void btnAjudaOnMouseClicked(MouseEvent event) throws IOException {
+        //Alert alert = new Alert(AlertType.INFORMATION);
+        //alert.setTitle("Aviso");
+        //alert.setHeaderText("Ajuda");
+        //alert.setContentText("Poxa, essa opção ainda está em desenvolvimento. Aguarde as próximas atualizações.");
+        //alert.showAndWait();
+        App.setRoot("precisoDeAjuda");
     }
     
 }
