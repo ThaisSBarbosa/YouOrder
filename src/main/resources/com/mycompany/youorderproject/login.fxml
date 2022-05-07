@@ -51,7 +51,7 @@
             <Cursor fx:constant="HAND" />
          </cursor></Button>
       <PasswordField fx:id="txtSenha" layoutX="288.0" layoutY="243.0" />
-      <Button fx:id="btnAjuda" layoutX="662.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#btnAjudaOnMouseClicked" prefHeight="43.0" prefWidth="45.0" style="-fx-background-radius: 100px;" text="?">
+      <Button fx:id="btnAjuda" layoutX="666.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#btnAjudaOnMouseClicked" prefHeight="43.0" prefWidth="45.0" style="-fx-background-radius: 100px;" text="?">
          <font>
             <Font name="Franklin Gothic Heavy" size="25.0" />
          </font>

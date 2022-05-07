@@ -7,23 +7,53 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Stack;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
 
+    private static Stage stage;
     private static Scene scene;
-
+    private static Stack<Scene> pilhaTelas;
+    
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("login"), 724, 486);
+        pilhaTelas = new Stack<>();
+        App.stage = stage;
         stage.setScene(scene);
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    static void setRoot(String fxml, Boolean stackLast) throws IOException {
+        if(stackLast)
+            pilhaTelas.push(scene);
+        
+        scene = new Scene(loadFXML(fxml), 724, 486);
+        stage.setScene(scene);
+    }
+    
+    static void popRoot(){
+        scene = pilhaTelas.pop();
+        stage.setScene(scene);
+    }
+    
+    static void exibeTelaDeAjuda() throws IOException{
+        App.setRoot("precisoDeAjuda", true);
+    }
+    
+    static void exibeMenuPrincipal() throws IOException{
+        App.setRoot("menuPrincipal", true);
+    }
+    
+    static void exibeTelaDeNovoCadastro() throws IOException{
+        App.setRoot("novoCadastro", true);
+    }
+    
+    static void exibeTelaDeCardapio() throws IOException{
+        App.setRoot("cardapio", true);
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

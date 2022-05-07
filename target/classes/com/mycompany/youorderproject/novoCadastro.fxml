@@ -39,7 +39,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="btnAjuda" layoutX="656.0" layoutY="34.0" mnemonicParsing="false" onMouseClicked="#btnAjudaOnMouseClicked" prefHeight="43.0" prefWidth="45.0" style="-fx-background-radius: 100px;" text="?">
+      <Button fx:id="btnAjuda" layoutX="661.0" layoutY="34.0" mnemonicParsing="false" onMouseClicked="#btnAjudaOnMouseClicked" prefHeight="43.0" prefWidth="45.0" style="-fx-background-radius: 100px;" text="?">
          <font>
             <Font name="Franklin Gothic Heavy" size="25.0" />
          </font>

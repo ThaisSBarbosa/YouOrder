@@ -46,7 +46,7 @@ public class NovoCadastroController implements Initializable {
 
     @FXML
     private void btnVoltarOnMouseClicked(MouseEvent event) throws IOException {
-        App.setRoot("login");
+        App.popRoot();
     }
 
     @FXML
@@ -56,7 +56,7 @@ public class NovoCadastroController implements Initializable {
         //alert.setHeaderText("Ajuda");
         //alert.setContentText("Poxa, essa opção ainda está em desenvolvimento. Aguarde as próximas atualizações.");
         //alert.showAndWait();
-        App.setRoot("precisoDeAjuda");
+        App.setRoot("precisoDeAjuda", true);
     }
     
 }

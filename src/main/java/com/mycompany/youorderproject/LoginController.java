@@ -55,7 +55,7 @@ public class LoginController implements Initializable {
     
     @FXML
     private void switchToNovoCadastro() throws IOException {
-        App.setRoot("novoCadastro");
+        App.exibeTelaDeNovoCadastro();
     }
     
     //outro teste
@@ -71,27 +71,12 @@ public class LoginController implements Initializable {
     
     @FXML
     private void btnAcessarOnMouseClicked() throws IOException {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Aviso");
-        alert.setHeaderText("Acesso ao Login");
-        alert.setContentText("Poxa, essa opção ainda está em desenvolvimento. Aguarde as próximas atualizações.");
-        alert.showAndWait();
+        App.exibeMenuPrincipal();
     }
 
     @FXML
     private void btnAjudaOnMouseClicked(MouseEvent event) throws IOException {
-        //Alert alert = new Alert(AlertType.INFORMATION);
-        //alert.setTitle("Aviso");
-        //alert.setHeaderText("Ajuda");
-        //alert.setContentText("Poxa, essa opção ainda está em desenvolvimento. Aguarde as próximas atualizações.");
-        //alert.showAndWait();
-        App.setRoot("precisoDeAjuda");
-        //Parent root = FXMLLoader.load(getClass().getResource("precisoDeAjuda.fxml"));
-        
-        //Scene scene = new Scene(root);
-        
-        //stage.setScene(scene);
-        
+        App.exibeTelaDeAjuda();
     }
 
 }
