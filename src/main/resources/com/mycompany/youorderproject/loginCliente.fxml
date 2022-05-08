@@ -35,9 +35,9 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <Label layoutX="346.0" layoutY="164.0" text="Login" />
-      <TextField fx:id="txtLogin" layoutX="288.0" layoutY="181.0" />
-      <Label layoutX="346.0" layoutY="222.0" text="Senha" />
+      <Label layoutX="341.0" layoutY="164.0" text="Login" />
+      <TextField fx:id="txtLogin" layoutX="277.0" layoutY="181.0" />
+      <Label layoutX="341.0" layoutY="222.0" text="Senha" />
       <Label fx:id="lblEsqueceuASenha" accessibleRole="BUTTON" layoutX="310.0" layoutY="293.0" onMouseClicked="#lblEsqueceuASenhaOnMouseClicked" text="Esqueceu a senha?" underline="true">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -50,6 +50,6 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <PasswordField fx:id="txtSenha" layoutX="288.0" layoutY="243.0" />
+      <PasswordField fx:id="txtSenha" layoutX="277.0" layoutY="243.0" />
    </children>
 </Pane>

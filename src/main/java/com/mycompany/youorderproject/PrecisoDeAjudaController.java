@@ -10,21 +10,29 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Alert.AlertType;
 
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
  *
  * @author thais
  */
-public class NovoCadastroController implements Initializable {
-
+public class PrecisoDeAjudaController implements Initializable {
+    
     @FXML
-    private Button btnRegistrar;
+    private Button btnEnviar;
+    
     @FXML
     private Button btnVoltar;
-
+    
+    @FXML
+    private Button btnSobre;
+    
     /**
      * Initializes the controller class.
      */
@@ -32,19 +40,10 @@ public class NovoCadastroController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
-    @FXML
-    private void btnRegistrarOnMouseClicked(MouseEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Aviso");
-        alert.setHeaderText("Registrar novo usuário");
-        alert.setContentText("Poxa, essa opção ainda está em desenvolvimento. Aguarde as próximas atualizações.");
-        alert.showAndWait();
-    }
-
+    
     @FXML
     private void btnVoltarOnMouseClicked(MouseEvent event) throws IOException {
-        App.setRoot("loginCliente");
+        App.setRoot("menuPrincipal");
     }
     
 }

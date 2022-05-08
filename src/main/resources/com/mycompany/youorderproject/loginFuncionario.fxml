@@ -35,21 +35,17 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <Label layoutX="346.0" layoutY="164.0" text="Login" />
-      <TextField fx:id="txtLogin" layoutX="288.0" layoutY="181.0" />
-      <Label layoutX="346.0" layoutY="222.0" text="Senha" />
-      <Label fx:id="lblEsqueceuASenha" accessibleRole="BUTTON" layoutX="310.0" layoutY="293.0" onMouseClicked="#lblEsqueceuASenhaOnMouseClicked" text="Esqueceu a senha?" underline="true">
+      <Label layoutX="341.0" layoutY="164.0" text="Login" />
+      <TextField fx:id="txtLogin" layoutX="277.0" layoutY="181.0" />
+      <Label layoutX="341.0" layoutY="222.0" text="Senha" />
+      <Label fx:id="lblEsqueceuASenha" accessibleRole="BUTTON" layoutX="310.0" layoutY="329.0" onMouseClicked="#lblEsqueceuASenhaOnMouseClicked" text="Esqueceu a senha?" underline="true">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Label>
-      <Button fx:id="btnAcessar" layoutX="288.0" layoutY="317.0" mnemonicParsing="false" onMouseClicked="#btnAcessarOnMouseClicked" prefHeight="25.0" prefWidth="149.0" text="Acessar">
+      <Button fx:id="btnAcessar" layoutX="288.0" layoutY="352.0" mnemonicParsing="false" onMouseClicked="#btnAcessarOnMouseClicked" prefHeight="25.0" prefWidth="149.0" text="Acessar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="novoCadastroButton" layoutX="288.0" layoutY="406.0" mnemonicParsing="false" onAction="#switchToNovoCadastro" prefHeight="25.0" prefWidth="149.0" text="Novo Cadastro">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
-      <PasswordField fx:id="txtSenha" layoutX="288.0" layoutY="243.0" />
+      <PasswordField fx:id="txtSenha" layoutX="277.0" layoutY="243.0" />
    </children>
 </Pane>

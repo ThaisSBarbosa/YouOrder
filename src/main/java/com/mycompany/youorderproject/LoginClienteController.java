@@ -21,7 +21,7 @@ import javafx.scene.control.TextField;
  *
  * @author thais
  */
-public class LoginController implements Initializable {
+public class LoginClienteController implements Initializable {
 
 
     @FXML
@@ -51,8 +51,6 @@ public class LoginController implements Initializable {
         App.setRoot("novoCadastro");
     }
     
-    //outro teste
-    
     @FXML
     private void lblEsqueceuASenhaOnMouseClicked() throws IOException {
         Alert alert = new Alert(AlertType.INFORMATION);
@@ -70,5 +68,4 @@ public class LoginController implements Initializable {
         alert.setContentText("Poxa, essa opção ainda está em desenvolvimento. Aguarde as próximas atualizações.");
         alert.showAndWait();
     }
-
 }
