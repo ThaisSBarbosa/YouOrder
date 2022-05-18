@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package com.mycompany.youorderproject;
+package br.edu.cefsa.controllers;
 
-import com.mycompany.youorderproject.dao.UsuarioDAO;
-import com.mycompany.youorderproject.exception.PersistenciaException;
+import br.edu.cefsa.dao.UsuarioDAO;
+import br.edu.cefsa.exception.PersistenciaException;
 import com.mycompany.youorderproject.model.Usuario;
 import java.io.IOException;
 import java.net.URL;

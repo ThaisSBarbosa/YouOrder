@@ -1,4 +1,4 @@
-package com.mycompany.youorderproject.dao;
+package br.edu.cefsa.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

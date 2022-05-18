@@ -1,5 +1,5 @@
 
-package com.mycompany.youorderproject.exception;
+package br.edu.cefsa.exception;
 
 public class PersistenciaException extends Exception {
 

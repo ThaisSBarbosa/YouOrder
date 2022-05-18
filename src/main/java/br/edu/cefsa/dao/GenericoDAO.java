@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.youorderproject.dao;
+package br.edu.cefsa.dao;
 
-import com.mycompany.youorderproject.exception.PersistenciaException;
+import br.edu.cefsa.exception.PersistenciaException;
 import java.io.Serializable;
 import java.util.List;
 

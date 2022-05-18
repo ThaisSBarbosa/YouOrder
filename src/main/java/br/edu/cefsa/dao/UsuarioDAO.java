@@ -1,7 +1,7 @@
-package com.mycompany.youorderproject.dao;
+package br.edu.cefsa.dao;
 
-import com.mycompany.youorderproject.exception.PersistenciaException;
-import com.mycompany.youorderproject.model.Usuario;
+import br.edu.cefsa.exception.PersistenciaException;
+import br.edu.cefsa.entities.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
