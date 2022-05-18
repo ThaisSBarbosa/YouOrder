@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -27,15 +28,15 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <Label layoutX="343.0" layoutY="164.0" text="Nome" />
-      <TextField layoutX="215.0" layoutY="181.0" prefHeight="25.0" prefWidth="295.0" />
-      <Label layoutX="311.0" layoutY="222.0" text="Restrição Alimentar" />
-      <Button fx:id="btnRegistrar" layoutX="285.0" layoutY="323.0" mnemonicParsing="false" onMouseClicked="#btnRegistrarOnMouseClicked" prefHeight="25.0" prefWidth="149.0" text="Registrar">
+      <Label layoutX="348.0" layoutY="115.0" text="Nome" />
+      <TextField fx:id="txtNome" layoutX="215.0" layoutY="135.0" prefHeight="25.0" prefWidth="295.0" />
+      <Label layoutX="311.0" layoutY="379.0" text="Restrição Alimentar" />
+      <Button fx:id="btnRegistrar" layoutX="290.0" layoutY="435.0" mnemonicParsing="false" onMouseClicked="#btnRegistrarOnMouseClicked" prefHeight="25.0" prefWidth="149.0" text="Registrar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <ComboBox layoutX="271.0" layoutY="239.0" prefHeight="25.0" prefWidth="184.0" />
-      <Button fx:id="btnVoltar" layoutX="14.0" layoutY="32.0" mnemonicParsing="false" onMouseClicked="#btnVoltarOnMouseClicked" text="Voltar">
+      <ComboBox fx:id="cbRestricao" layoutX="271.0" layoutY="396.0" prefHeight="25.0" prefWidth="184.0" />
+      <Button fx:id="btnVoltar" layoutX="26.0" layoutY="435.0" mnemonicParsing="false" onMouseClicked="#btnVoltarOnMouseClicked" text="Voltar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -47,5 +48,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Label layoutX="348.0" layoutY="168.0" text="E-mail" />
+      <TextField fx:id="txtEmail" layoutX="215.0" layoutY="185.0" prefHeight="25.0" prefWidth="295.0" />
+      <Label layoutX="340.0" layoutY="222.0" text="Endereço" />
+      <TextField fx:id="txtEndereco" layoutX="216.0" layoutY="239.0" prefHeight="25.0" prefWidth="295.0" />
+      <Label layoutX="347.0" layoutY="276.0" text="Senha" />
+      <PasswordField fx:id="txtSenha" layoutX="216.0" layoutY="293.0" prefHeight="25.0" prefWidth="295.0" />
+      <Label layoutX="350.0" layoutY="325.0" text="Sexo" />
+      <ComboBox fx:id="cbSexo" layoutX="271.0" layoutY="342.0" prefHeight="25.0" prefWidth="184.0" />
    </children>
 </Pane>

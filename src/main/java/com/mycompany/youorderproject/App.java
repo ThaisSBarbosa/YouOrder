@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Stack;
+import javafx.scene.control.ListView;
 
 /**
  * JavaFX App
@@ -17,6 +18,7 @@ public class App extends Application {
     private static Stage stage;
     private static Scene scene;
     private static Stack<Scene> pilhaTelas;
+    public static ListView<String> listItensSelecionados; 
     
     @Override
     public void start(Stage stage) throws IOException {
@@ -54,6 +56,10 @@ public class App extends Application {
     
     static void exibeTelaDeCardapio() throws IOException{
         App.setRoot("cardapio", true);
+    }
+    
+    static void exibeTelaPedido() throws IOException{
+        App.setRoot("pedido", true);
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
