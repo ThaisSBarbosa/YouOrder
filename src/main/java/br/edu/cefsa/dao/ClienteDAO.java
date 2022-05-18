@@ -28,7 +28,7 @@ public class ClienteDAO implements GenericoDAO<Cliente> {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
             ResultSet result = pStatement.executeQuery();
-            while (result.next()) {
+            /*while (result.next()) {
                 clientes.add(new Cliente(
                         result.getInt("ID"),
                         result.getString("NOME"),
@@ -37,7 +37,7 @@ public class ClienteDAO implements GenericoDAO<Cliente> {
                         result.getInt("PERFILRESTRICAO"),
                         result.getInt("QTDPEDIDOSFIDELIDADE")
                 ));
-            }
+            }*/
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -62,9 +62,9 @@ public class ClienteDAO implements GenericoDAO<Cliente> {
             PreparedStatement pStatement = connection.prepareStatement(sql);
             pStatement.setInt(1, cliente.getId());
             pStatement.setString(2, cliente.getNome());
-            pStatement.setString(3, cliente.getDataNascimento().toString());
+            //pStatement.setString(3, cliente.getDataNascimento().toString());
             pStatement.setString(4, cliente.getEndereco());
-            pStatement.setInt(5, cliente.getPerfilRestricao());
+            //pStatement.setInt(5, cliente.getPerfilRestricao());
             pStatement.setInt(6, cliente.getQtdPedidosFidelidade());
             pStatement.execute();
         } catch (ClassNotFoundException ex) {

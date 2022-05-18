@@ -10,31 +10,33 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="381.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.cefsa.controllers.PrecisoDeAjudaController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.youorderproject.PrecisoDeAjudaController">
    <children>
-      <MenuBar fx:id="btnSobre" prefHeight="32.0" prefWidth="744.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Sobre">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Versão" />
-            </items>
-          </Menu>
-        </menus>
+      <MenuBar prefHeight="25.0" prefWidth="719.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Sobre">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Versão" />
+               </items>
+            </Menu>
+         </menus>
       </MenuBar>
-      <Label layoutX="263.0" layoutY="75.0" text="Preciso de Ajuda">
+      <Label layoutX="253.0" layoutY="74.0" text="Preciso de Ajuda">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
-      <Label layoutX="249.0" layoutY="178.0" text="Procura ajuda em um desses assuntos?" />
-<!--      <Button fx:id="btnRegistrar" layoutX="295.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#btnRegistrarOnMouseClicked" prefHeight="25.0" prefWidth="149.0" text="Enviar">
+      <Label layoutX="255.0" layoutY="209.0" text="Em qual assunto você precisa de ajuda?" />
+      <Button fx:id="btnEnviar" layoutX="466.0" layoutY="372.0" mnemonicParsing="false" onMouseClicked="#btnEnviarOnMouseClicked" prefHeight="47.0" prefWidth="158.0" text="ENVIAR">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
-      <ComboBox fx:id="cbAssuntos" layoutX="249.0" layoutY="199.0" prefHeight="31.0" prefWidth="258.0" />
-      <Button fx:id="btnVoltar" layoutX="14.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#btnVoltarOnMouseClicked" text="Voltar">
+         </cursor>
+      </Button>
+      <ComboBox layoutX="49.0" layoutY="231.0" prefHeight="25.0" prefWidth="622.0" />
+      <Button fx:id="btnVoltar" layoutX="95.0" layoutY="372.0" mnemonicParsing="false" onMouseClicked="#btnVoltarOnMouseClicked" prefHeight="47.0" prefWidth="158.0" text="VOLTAR">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>-->
+         </cursor>
+      </Button>
    </children>
 </Pane>

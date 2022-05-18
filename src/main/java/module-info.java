@@ -5,6 +5,6 @@ module com.mycompany.youorderproject {
     requires java.sql;
     requires org.junit.jupiter.api;
 
-    opens com.mycompany.youorderproject to javafx.fxml;
-    exports com.mycompany.youorderproject;
+    opens br.edu.cefsa to javafx.fxml;
+    exports br.edu.cefsa.controllers;
 }

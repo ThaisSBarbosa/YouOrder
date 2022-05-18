@@ -25,7 +25,7 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
             ResultSet result = pStatement.executeQuery();
-            while (result.next()) {
+            /*while (result.next()) {
                 usuarios.add(new Usuario(
                         result.getInt("ID"),
                         result.getString("EMAIL"),
@@ -34,7 +34,7 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
                         result.getString("SEXO").charAt(0),
                         result.getString("TIPOUSUARIO").charAt(0)
                 ));
-            }
+            }*/
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -57,11 +57,11 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, usuario.getEmail());
+            //pStatement.setString(1, usuario.getEmail());
             pStatement.setString(2, usuario.getSenha());
-            pStatement.setDate(3, java.sql.Date.valueOf(usuario.getDataCriacao().toLocalDate()));
-            pStatement.setString(4, String.valueOf(usuario.getSexo()));
-            pStatement.setString(5, String.valueOf(usuario.getTipoUsuario()));
+            //pStatement.setDate(3, java.sql.Date.valueOf(usuario.getDataCriacao().toLocalDate()));
+            //pStatement.setString(4, String.valueOf(usuario.getSexo()));
+            //pStatement.setString(5, String.valueOf(usuario.getTipoUsuario()));
             pStatement.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);

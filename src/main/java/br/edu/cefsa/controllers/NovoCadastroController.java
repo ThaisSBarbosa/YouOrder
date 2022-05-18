@@ -6,7 +6,7 @@ package br.edu.cefsa.controllers;
 
 import br.edu.cefsa.dao.UsuarioDAO;
 import br.edu.cefsa.exception.PersistenciaException;
-import com.mycompany.youorderproject.model.Usuario;
+import br.edu.cefsa.entities.Usuario;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -60,17 +60,17 @@ public class NovoCadastroController implements Initializable {
 
     @FXML
     private void btnRegistrarOnMouseClicked(MouseEvent event) throws PersistenciaException {
-        Usuario novoUsuario = new Usuario(
+        /*Usuario novoUsuario = new Usuario(
                 0, 
                 txtEmail.getText(), 
                 txtSenha.getText(), 
                 LocalDateTime.now(), 
                 cbSexo.getSelectionModel().getSelectedItem().charAt(0), 
-                'C');
+                'C');*/
         
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         
-        usuarioDAO.inserir(novoUsuario);
+        //usuarioDAO.inserir(novoUsuario);
     }
 
     @FXML

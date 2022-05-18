@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="telaLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.cefsa.controllers.LoginClienteController">
+<Pane id="telaLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.youorderproject.LoginController">
    <children>
-<!--      <ImageView fitHeight="460.0" fitWidth="734.0" layoutY="25.0" opacity="0.39" pickOnBounds="true">
+      <ImageView fitHeight="460.0" fitWidth="734.0" layoutY="25.0" opacity="0.39" pickOnBounds="true">
          <image>
             <Image url="file:/C:/Users/carlo/OneDrive/Documentos/Termomecanica/LP2/YouOrder/src/main/java/images/restaurante.jpg" />
          </image>
-      </ImageView>-->
+      </ImageView>
       <Pane layoutX="205.0" layoutY="55.0" prefHeight="406.0" prefWidth="315.0" style="-fx-background-color: #eeeee4; -fx-background-radius: 20px;" />
       <MenuBar prefHeight="11.0" prefWidth="724.0">
         <menus>
@@ -35,10 +35,10 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <Label layoutX="341.0" layoutY="164.0" text="Login" />
-      <TextField fx:id="txtLogin" layoutX="277.0" layoutY="181.0" />
-      <Label layoutX="341.0" layoutY="222.0" text="Senha" />
-<!--      <Label fx:id="lblEsqueceuASenha" accessibleRole="BUTTON" layoutX="310.0" layoutY="293.0" onMouseClicked="#lblEsqueceuASenhaOnMouseClicked" text="Esqueceu a senha?" underline="true">
+      <Label layoutX="346.0" layoutY="164.0" text="Login" />
+      <TextField fx:id="txtLogin" layoutX="288.0" layoutY="181.0" />
+      <Label layoutX="346.0" layoutY="222.0" text="Senha" />
+      <Label fx:id="lblEsqueceuASenha" accessibleRole="BUTTON" layoutX="310.0" layoutY="293.0" onMouseClicked="#lblEsqueceuASenhaOnMouseClicked" text="Esqueceu a senha?" underline="true">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Label>
@@ -49,7 +49,15 @@
       <Button fx:id="novoCadastroButton" layoutX="288.0" layoutY="406.0" mnemonicParsing="false" onAction="#switchToNovoCadastro" prefHeight="25.0" prefWidth="149.0" text="Novo Cadastro">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>-->
-      <PasswordField fx:id="txtSenha" layoutX="277.0" layoutY="243.0" />
+         </cursor></Button>
+      <PasswordField fx:id="txtSenha" layoutX="288.0" layoutY="243.0" />
+      <Button fx:id="btnAjuda" layoutX="666.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#btnAjudaOnMouseClicked" prefHeight="43.0" prefWidth="45.0" style="-fx-background-radius: 100px;" text="?">
+         <font>
+            <Font name="Franklin Gothic Heavy" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </Pane>
