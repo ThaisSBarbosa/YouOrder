@@ -1,4 +1,4 @@
-package com.mycompany.youorderproject;
+package com.mycompany.youorderproject.controllers;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license

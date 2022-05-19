@@ -2,69 +2,64 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package com.mycompany.youorderproject;
+package com.mycompany.youorderproject.controllers;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
  *
  * @author carlo
  */
-public class MenuPrincipalController implements Initializable {
+public class PedidoController implements Initializable {
+
 
     @FXML
-    private Button btnAtualizarCadastro;
+    private ListView<String> listSelecionados;
     @FXML
-    private Button btnHistoricoPedidos;
+    private Button btnRemover;
     @FXML
-    private Button btnMeusFavoritos;
+    private Button btnConfirmarPedido;
     @FXML
-    private Button btnNovoPedido;
+    private TextArea txtObservacao;
     @FXML
     private Button btnAjuda;
     @FXML
-    private Button btnSair;
-
+    private Button btnVoltar;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        listSelecionados.getItems().addAll(App.listItensSelecionados.getItems());
     }    
-
+    
     @FXML
-    private void btnAtualizarCadastroOnMouseClicked(MouseEvent event) {
+    private void btnRemoverOnMouseClicked(MouseEvent event) {
+        listSelecionados.getItems().remove(listSelecionados.getSelectionModel().getSelectedIndex());
     }
 
     @FXML
-    private void btnHistoricoPedidosOnMouseClicked(MouseEvent event) {
-    }
-
-    @FXML
-    private void btnMeusFavoritosOnMouseClicked(MouseEvent event) {
-    }
-
-    @FXML
-    private void btnNovoPedidoOnMouseClicked(MouseEvent event) throws IOException {
-        App.exibeTelaDeCardapio();
+    private void btnConfirmarPedidoOnMouseClicked(MouseEvent event) {
     }
 
     @FXML
     private void btnAjudaOnMouseClicked(MouseEvent event) throws IOException {
+        
         App.exibeTelaDeAjuda();
     }
 
     @FXML
-    private void btnSairOnMouseClicked(MouseEvent event) {
+    private void btnVoltarOnMouseClicked(MouseEvent event) {
         App.popRoot();
     }
-    
+
 }

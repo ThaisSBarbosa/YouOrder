@@ -1,4 +1,4 @@
-package com.mycompany.youorderproject;
+package com.mycompany.youorderproject.controllers;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
