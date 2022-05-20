@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.youorderproject.PrecisoDeAjudaController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.youorderproject.PrecisoDeAjudaController">
    <children>
       <MenuBar prefHeight="25.0" prefWidth="719.0">
          <menus>
@@ -32,7 +32,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ComboBox layoutX="49.0" layoutY="231.0" prefHeight="25.0" prefWidth="622.0" />
+      <ComboBox fx:id="cbAjuda" layoutX="49.0" layoutY="231.0" prefHeight="25.0" prefWidth="622.0" />
       <Button fx:id="btnVoltar" layoutX="95.0" layoutY="372.0" mnemonicParsing="false" onMouseClicked="#btnVoltarOnMouseClicked" prefHeight="47.0" prefWidth="158.0" text="VOLTAR">
          <cursor>
             <Cursor fx:constant="HAND" />
