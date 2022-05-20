@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.edu.cefsa.entities;
+package com.mycompany.youorderproject.model;
 
-import br.edu.cefsa.enums.RestricaoAlimentar;
+import com.mycompany.youorderproject.enums.RestricaoAlimentar;
 import java.time.LocalDateTime;
 
 /**
@@ -19,6 +19,12 @@ public class Cliente extends Usuario {
                     String userName, String senha, LocalDateTime ultimoAcesso, 
                     LocalDateTime dataNasc, String endereco) throws Exception{
         super(id, nome, userName, senha, ultimoAcesso, dataNasc, endereco);
+        this.restricaoAlimentar = restricaoAlimentar;
+        this.qtdPedidosFidelidade = qtdPedidosFidelidade;
+    }
+    
+    public Cliente(Usuario usuario, RestricaoAlimentar restricaoAlimentar, int qtdPedidosFidelidade) throws Exception{
+        super(usuario.getId(), usuario.getNome(), usuario.getUserName(), usuario.getSenha(), usuario.getUltimoAcesso(), usuario.getDataNasc(), usuario.getEndereco());
         this.restricaoAlimentar = restricaoAlimentar;
         this.qtdPedidosFidelidade = qtdPedidosFidelidade;
     }

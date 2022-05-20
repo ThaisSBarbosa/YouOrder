@@ -8,6 +8,8 @@ package com.mycompany.youorderproject.utils;
  *
  * @author carlo
  */
-public class Contantes {
-    
+public class Constantes {
+    public static final int QTD_PEDIDOS_DESCONTO_FIDELIDADE = 5;
+    public static final int VALOR_DESCONTO_FIDELIDADE = 20;
+    public static final int LIMITE_CARACTERES_USERNAME = 10;
 }

@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.edu.cefsa.entities;
+package com.mycompany.youorderproject.model;
 
-import br.edu.cefsa.utils.Constantes;
+import com.mycompany.youorderproject.utils.Constantes;
 import java.time.LocalDateTime;
 
 /**

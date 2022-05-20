@@ -5,5 +5,5 @@ module com.mycompany.youorderproject {
     requires java.sql;
 
     opens com.mycompany.youorderproject to javafx.fxml;
-    exports com.mycompany.youorderproject.controllers;
+    exports com.mycompany.youorderproject;
 }

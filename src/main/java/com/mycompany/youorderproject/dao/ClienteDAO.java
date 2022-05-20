@@ -26,16 +26,13 @@ public class ClienteDAO implements GenericoDAO<Cliente> {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
             ResultSet result = pStatement.executeQuery();
-            while (result.next()) {
+            /*while (result.next()) {
                 clientes.add(new Cliente(
-                        result.getInt("ID"),
-                        result.getString("NOME"),
-                        LocalDate.parse(result.getString("DATANASCIMENTO")),
-                        result.getString("ENDERECO"),
-                        result.getInt("PERFILRESTRICAO"),
-                        result.getInt("QTDPEDIDOSFIDELIDADE")
+                        result.getInt("ID_USUARIO"),
+                        result.getInt("REST_ALIMENTAR"),
+                        result.getInt("QTD_PED_FIDELIDADE")
                 ));
-            }
+            }*/
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -52,18 +49,15 @@ public class ClienteDAO implements GenericoDAO<Cliente> {
 
     @Override
     public void inserir(Cliente cliente) throws PersistenciaException {
-        String sql = "INSERT INTO YOUORDER.CLIENTE (ID, NOME, DATANASCIMENTO, ENDERECO, PERFILRESTRICAO, QTDPEDIDOSFIDELIDADE) VALUES (?)";
+        String sql = "INSERT INTO YOUORDER.CLIENTE (ID_USUARIO, REST_ALIMENTAR, QTD_PED_FIDELIDADE) VALUES (?)";
 
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
             pStatement.setInt(1, cliente.getId());
-            pStatement.setString(2, cliente.getNome());
-            pStatement.setString(3, cliente.getDataNascimento().toString());
-            pStatement.setString(4, cliente.getEndereco());
-            pStatement.setInt(5, cliente.getPerfilRestricao());
-            pStatement.setInt(6, cliente.getQtdPedidosFidelidade());
+            pStatement.setInt(2, cliente.getRestricaoAlimentar().ordinal());
+            pStatement.setInt(3, cliente.getQtdPedidosFidelidade());
             pStatement.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);

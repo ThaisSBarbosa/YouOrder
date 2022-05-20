@@ -6,13 +6,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Date;
-
 
 public class UsuarioDAO implements GenericoDAO<Usuario> {
 
@@ -28,16 +28,19 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
             while (result.next()) {
                 usuarios.add(new Usuario(
                         result.getInt("ID"),
-                        result.getString("EMAIL"),
+                        result.getString("NOME"),
+                        result.getString("USERNAME"),
                         result.getString("SENHA"),
-                        LocalDateTime.parse(result.getString("DATACRIACAO")),
-                        result.getString("SEXO").charAt(0),
-                        result.getString("TIPOUSUARIO").charAt(0)
+                        LocalDateTime.parse(result.getString("ULT_ACESSO")),
+                        LocalDateTime.parse(result.getString("DATA_NASC")),
+                        result.getString("ENDERECO")
                 ));
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
@@ -51,24 +54,32 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
 
     @Override
     public void inserir(Usuario usuario) throws PersistenciaException {
-        String sql = "INSERT INTO CEFSA.USUARIO(EMAIL, SENHA, DATACRIACAO, SEXO, TIPOUSUARIO) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO CEFSA.USUARIO(NOME, USERNAME, SENHA, ULT_ACESSO, DATA_NASC, ENDERECO) VALUES (?, ?, ?, ?, ?, ?)";
 
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, usuario.getEmail());
-            pStatement.setString(2, usuario.getSenha());
-            pStatement.setDate(3, java.sql.Date.valueOf(usuario.getDataCriacao().toLocalDate()));
-            pStatement.setString(4, String.valueOf(usuario.getSexo()));
-            pStatement.setString(5, String.valueOf(usuario.getTipoUsuario()));
+            pStatement.setString(1, usuario.getNome());
+            pStatement.setString(2, usuario.getUserName());
+            pStatement.setString(3, usuario.getSenha());
+            pStatement.setDate(4, java.sql.Date.valueOf(usuario.getUltimoAcesso().toLocalDate()));
+            pStatement.setDate(5, java.sql.Date.valueOf(usuario.getDataNasc().toLocalDate()));
+            pStatement.setString(6, String.valueOf(usuario.getEndereco()));
             pStatement.execute();
+            ResultSet rs = pStatement.getGeneratedKeys();
+            if (rs.next()) {
+                usuario.setId(rs.getInt(1));
+            }
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new PersistenciaException("Não foi possível carregar o driver de conexão com a base de dados");
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new PersistenciaException("Erro ao enviar o comando para a base de dados");
+        } catch (Exception ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 connection.close();
@@ -157,4 +168,3 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
         return null;
     }
 }
-
