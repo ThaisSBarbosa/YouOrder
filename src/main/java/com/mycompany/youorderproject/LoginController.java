@@ -4,6 +4,8 @@
  */
 package com.mycompany.youorderproject;
 
+import com.mycompany.youorderproject.dao.Conexao;
+import com.mycompany.youorderproject.dao.UsuarioDAO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -65,12 +67,22 @@ public class LoginController implements Initializable {
     
     @FXML
     private void btnAcessarOnMouseClicked() throws IOException {
-        App.exibeMenuPrincipal();
+        UsuarioDAO usuario = new UsuarioDAO();
+        if (usuario.validarLogin(txtLogin.getText(), txtSenha.getText())){
+            App.exibeMenuPrincipal();
+        }
     }
     
     @FXML
     private void btnAjudaOnMouseClicked(MouseEvent event) throws IOException {
         App.exibeTelaDeAjuda();
+    }
+    
+    public void validarLogin(){
+        
+        
+        
+        
     }
 
 }

@@ -13,9 +13,9 @@ import java.util.ResourceBundle;
 public class Conexao {
 
     //private final ResourceBundle BUNDLE = ResourceBundle.getBundle("derb", new Locale("pt", "BR"));
-    private static Conexao conexao;
+    public static Conexao conexao;
 
-    private Conexao() {
+    public Conexao() {
         
     }
 

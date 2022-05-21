@@ -16,6 +16,30 @@ import java.util.Date;
 
 public class UsuarioDAO implements GenericoDAO<Usuario> {
 
+    Connection conn;
+    PreparedStatement st;
+    ResultSet rs;
+
+    public Boolean validarLogin(String username, String senha) {
+        try {
+//            Usuario usuario = new Usuario();
+            st = conn.prepareStatement("SELECT COUNT(1) FROM USUARIO WHERE USERNAME = '" + username + "' AND SENHA = '" + senha + "'");
+            st.setString(1, username);
+            rs = st.executeQuery();
+
+//            if (rs.next()) {
+//                //usuario.setUserName(rs.getString("username"));
+//                usuario.setSenha(rs.getString("senha"));
+//                return usuario;
+//            } else {
+//                return null;
+//            }
+        }   catch(SQLException ex){
+            return null;
+        }
+        return true;
+    }
+
     @Override
     public List<Usuario> listar() throws PersistenciaException {
         List<Usuario> usuarios = new ArrayList();
@@ -71,7 +95,7 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
             if (rs.next()) {
                 usuario.setId(rs.getInt(1));
             }
-            
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new PersistenciaException("Não foi possível carregar o driver de conexão com a base de dados");
