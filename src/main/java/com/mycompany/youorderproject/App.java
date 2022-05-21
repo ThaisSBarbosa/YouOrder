@@ -61,6 +61,10 @@ public class App extends Application {
     static void exibeTelaPedido() throws IOException{
         App.setRoot("pedido", true);
     }
+    
+    static void exibeTelaRecuperarSenha() throws IOException{
+        App.setRoot("recuperarSenha", true);
+    }
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));

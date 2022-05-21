@@ -58,22 +58,16 @@ public class LoginController implements Initializable {
         App.exibeTelaDeNovoCadastro();
     }
     
-    //outro teste
-    
     @FXML
     private void lblEsqueceuASenhaOnMouseClicked() throws IOException {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Aviso");
-        alert.setHeaderText("Esqueceu a senha?");
-        alert.setContentText("Poxa, essa opção ainda está em desenvolvimento. Aguarde as próximas atualizações.");
-        alert.showAndWait();
+        App.exibeTelaRecuperarSenha();
     }
     
     @FXML
     private void btnAcessarOnMouseClicked() throws IOException {
         App.exibeMenuPrincipal();
     }
-
+    
     @FXML
     private void btnAjudaOnMouseClicked(MouseEvent event) throws IOException {
         App.exibeTelaDeAjuda();
