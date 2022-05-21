@@ -1,0 +1,19 @@
+CREATE TABLE "USUARIO"
+(    
+   "ID" INT not null primary key
+        GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),   
+   "NOME" VARCHAR(100),     
+   "USERNAME" VARCHAR(20),
+   "SENHA" VARCHAR(100),
+   "ULT_ACESSO" DATE,
+   "DATA_NASC" DATE,  
+   "ENDERECO" VARCHAR(250)  
+);
+
+CREATE TABLE "CLIENTE"
+(    
+   "ID_USUARIO" INT not null primary key,   
+   "REST_ALIMENTAR" INT,     
+   "QTD_PED_FIDELIDADE" INT
+);
