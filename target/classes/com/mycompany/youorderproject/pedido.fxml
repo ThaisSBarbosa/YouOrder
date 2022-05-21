@@ -17,7 +17,7 @@
    <children>
       <ImageView fitHeight="460.0" fitWidth="734.0" layoutY="25.0" opacity="0.39" pickOnBounds="true">
          <image>
-            <Image url="file:/C:/Users/carlo/OneDrive/Documentos/Termomecanica/LP2/YouOrder/src/main/java/images/restaurante.jpg" />
+            <Image url="file:./src/main/java/images/restaurante.jpg" />
          </image>
       </ImageView>
       <MenuBar prefHeight="11.0" prefWidth="724.0">
