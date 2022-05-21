@@ -77,12 +77,4 @@ public class LoginController implements Initializable {
     private void btnAjudaOnMouseClicked(MouseEvent event) throws IOException {
         App.exibeTelaDeAjuda();
     }
-    
-    public void validarLogin(){
-        
-        
-        
-        
-    }
-
 }

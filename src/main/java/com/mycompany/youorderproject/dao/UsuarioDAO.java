@@ -16,28 +16,34 @@ import java.util.Date;
 
 public class UsuarioDAO implements GenericoDAO<Usuario> {
 
-    Connection conn;
-    PreparedStatement st;
-    ResultSet rs;
-
     public Boolean validarLogin(String username, String senha) {
-        try {
-//            Usuario usuario = new Usuario();
-            st = conn.prepareStatement("SELECT COUNT(1) FROM USUARIO WHERE USERNAME = '" + username + "' AND SENHA = '" + senha + "'");
-            st.setString(1, username);
-            rs = st.executeQuery();
+        String sql = "SELECT COUNT(1) FROM YOUORDER.USUARIO WHERE USERNAME = ? AND SENHA = ?";
 
-//            if (rs.next()) {
-//                //usuario.setUserName(rs.getString("username"));
-//                usuario.setSenha(rs.getString("senha"));
-//                return usuario;
-//            } else {
-//                return null;
-//            }
-        }   catch(SQLException ex){
-            return null;
+        Connection connection = null;
+        try {
+            connection = Conexao.getInstance().getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(sql);
+            pStatement.setString(1, username);
+            pStatement.setString(2, senha);
+            pStatement.execute();
+            ResultSet rs = pStatement.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        return true;
+        return false;
     }
 
     @Override
@@ -59,18 +65,26 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
                         LocalDateTime.parse(result.getString("DATA_NASC")),
                         result.getString("ENDERECO")
                 ));
+
             }
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
         } catch (Exception ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 connection.close();
+
             } catch (SQLException ex) {
-                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UsuarioDAO.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         }
         return usuarios;
@@ -94,21 +108,29 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
             ResultSet rs = pStatement.getGeneratedKeys();
             if (rs.next()) {
                 usuario.setId(rs.getInt(1));
+
             }
 
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
             throw new PersistenciaException("Não foi possível carregar o driver de conexão com a base de dados");
+
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
             throw new PersistenciaException("Erro ao enviar o comando para a base de dados");
+
         } catch (Exception ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 connection.close();
+
             } catch (SQLException ex) {
-                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UsuarioDAO.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
