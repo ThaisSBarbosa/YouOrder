@@ -9,8 +9,34 @@ package com.mycompany.youorderproject.enums;
  * @author thais
  */
 public enum StatusPedido {
-    PENDENTE_DE_CONFIRMACAO,
-    EM_PREPARO,
-    CONCLUIDO,
-    PAGO;
+    PEDIDO_RECEBIDO {
+        @Override
+        public String toString() {
+            return "Pedido recebido";
+        }
+    },
+    PEDIDO_FILA {
+        @Override
+        public String toString() {
+            return "Pedido em fila de espera";
+        }
+    },
+    PEDIDO_PRONTO {
+        @Override
+        public String toString(){
+            return "Pedido pronto";
+        }
+    },
+    PEDIDO_ENTREGUE {
+        @Override
+        public String toString(){
+            return "Pedido entregue";
+        }
+    },
+    PEDIDO_FINALIZADO {
+        @Override
+        public String toString(){
+            return "Pedido finalizado (pago)";
+        }        
+    };
 }
