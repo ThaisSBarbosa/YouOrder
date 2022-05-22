@@ -17,7 +17,7 @@ import java.util.Date;
 public class UsuarioDAO implements GenericoDAO<Usuario> {
 
     public Boolean validarLogin(String username, String senha) {
-        String sql = "SELECT COUNT(1) FROM YOUORDER.USUARIO WHERE USERNAME = ? AND SENHA = ?";
+        String sql = "SELECT * FROM USUARIO WHERE USERNAME = ? AND SENHA = ? FETCH FIRST 1 ROWS ONLY";
 
         Connection connection = null;
         try {
@@ -26,10 +26,15 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
             pStatement.setString(1, username);
             pStatement.setString(2, senha);
             pStatement.execute();
+
             ResultSet rs = pStatement.executeQuery();
-            if (rs.next()) {
+            List<String> users = null;
+
+            while (rs.next()) {
                 return true;
             }
+            return false;
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
