@@ -16,17 +16,19 @@ import java.util.ArrayList;
  */
 public class Pedido {
 
+    private int id;
     private Cliente cliente;
-    private ArrayList<Item> itens = new ArrayList<Item>();
+    //private ArrayList<Item> itens = new ArrayList<Item>();
     private LocalDateTime dataInicio;
     private LocalDateTime dataFinal;
     private int numeroMesa;
     private StatusPedido status;
     private double valor;
 
-    public Pedido(Cliente cliente, ArrayList<Item> itens, LocalDateTime dataInicio, LocalDateTime dataFinal, int numeroMesa, StatusPedido status, double valor) throws Exception {
+    public Pedido(int id, Cliente cliente, LocalDateTime dataInicio, LocalDateTime dataFinal, int numeroMesa, StatusPedido status, double valor) throws Exception {
+        this.id = id;
         this.cliente = verificaPedidoPossuiCliente(cliente);
-        this.itens = verificaPedidoPossuiItens(itens);
+        //this.itens = verificaPedidoPossuiItens(itens);
         this.dataInicio = verificaDataInicioMaiorQueDataAtual(dataInicio);
         this.dataFinal = dataFinal;
         this.numeroMesa = verificaMesaDiferenteDeZero(numeroMesa);
@@ -34,13 +36,21 @@ public class Pedido {
         this.valor = verificaDescontoFidelidadeNoPedido(valor);
     }
 
-    public ArrayList<Item> getItens() {
-        return itens;
+    public int getId() {
+        return id;
     }
 
-    public void setItens(ArrayList<Item> itens) throws Exception {
-        this.itens = verificaPedidoPossuiItens(itens);
+    public void setId(int id) {
+        this.id = id;
     }
+
+//    public ArrayList<Item> getItens() {
+//        return itens;
+//    }
+//
+//    public void setItens(ArrayList<Item> itens) throws Exception {
+//        this.itens = verificaPedidoPossuiItens(itens);
+//    }
 
     public Cliente getCliente() {
         return cliente;
@@ -130,7 +140,7 @@ public class Pedido {
                 valor -= Constantes.VALOR_DESCONTO_FIDELIDADE;
             }
             this.getCliente().setQtdPedidosFidelidade(0);
-        }        
+        }
         return valor;
     }
 }
