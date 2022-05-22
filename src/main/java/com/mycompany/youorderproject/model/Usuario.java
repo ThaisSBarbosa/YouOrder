@@ -16,6 +16,8 @@ public class Usuario {
     private String nome;
     private String userName;
     private String senha;
+    private String pergunta;
+    private String resposta;
     private LocalDateTime ultimoAcesso;
     private LocalDateTime dataNasc;
     private String endereco;
@@ -81,6 +83,22 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+    
+    public void setPergunta(String pergunta) {
+        this.pergunta = pergunta;
+    }
+
+    public void setResposta(String resposta) {
+        this.resposta = resposta;
+    }
+
+    public String getPergunta() {
+        return pergunta;
+    }
+
+    public String getResposta() {
+        return resposta;
     }
 
     public LocalDateTime getUltimoAcesso() {

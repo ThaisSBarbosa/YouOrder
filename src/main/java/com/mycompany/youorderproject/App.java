@@ -42,6 +42,10 @@ public class App extends Application {
         stage.setScene(scene);
     }
     
+    static void exibeTelaLogin() throws IOException{
+        App.setRoot("login", true);
+    }
+    
     static void exibeTelaDeAjuda() throws IOException{
         App.setRoot("precisoDeAjuda", true);
     }

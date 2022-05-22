@@ -26,16 +26,23 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <Button fx:id="btnEnviar" layoutX="305.0" layoutY="297.0" mnemonicParsing="false" onMouseClicked="#btnRegistrarOnMouseClicked" prefHeight="25.0" prefWidth="149.0" text="Enviar">
+      <Button fx:id="btnEnviar" layoutX="305.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#btnEnviarOnMouseClicked" prefHeight="25.0" prefWidth="149.0" text="Enviar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="btnVoltar" layoutX="65.0" layoutY="297.0" mnemonicParsing="false" onMouseClicked="#btnVoltarOnMouseClicked" text="Voltar">
+      <Button fx:id="btnVoltar" layoutX="65.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#btnVoltarOnMouseClicked" text="Voltar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Label layoutX="123.0" layoutY="129.0" text="Responda a Pergunta Secreta:" />
-      <Label fx:id="lblPergunta" layoutX="123.0" layoutY="181.0" text="Pergunta" />
-      <TextField fx:id="txtResposta" layoutX="122.0" layoutY="209.0" prefHeight="25.0" prefWidth="378.0" />
+      <Label layoutX="301.0" layoutY="88.0" text="Responda a Pergunta Secreta" />
+      <Label fx:id="lblPergunta" layoutX="261.0" layoutY="213.0" text="Pergunta" />
+      <TextField fx:id="txtResposta" layoutX="260.0" layoutY="234.0" prefHeight="25.0" prefWidth="238.0" />
+      <TextField fx:id="txtUsername" layoutX="166.0" layoutY="156.0" prefHeight="25.0" prefWidth="238.0" />
+      <Label fx:id="lblUsername" layoutX="167.0" layoutY="135.0" text="Usuário" />
+      <Button fx:id="btnTrazerPergunta" layoutX="430.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#btnTrazerPerguntaOnMouseClicked" prefHeight="25.0" prefWidth="149.0" text="Trazer Pergunta">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </Pane>

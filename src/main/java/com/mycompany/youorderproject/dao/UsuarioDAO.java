@@ -26,9 +26,7 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
             pStatement.setString(1, username);
             pStatement.setString(2, senha);
             pStatement.execute();
-
             ResultSet rs = pStatement.executeQuery();
-            List<String> users = null;
 
             while (rs.next()) {
                 return true;
@@ -51,6 +49,103 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
         return false;
     }
 
+    public Boolean buscarUsuario(String username){
+        String sql = "SELECT * FROM USUARIO WHERE USERNAME = ?";
+
+        Connection connection = null;
+        try {
+            connection = Conexao.getInstance().getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(sql);
+            pStatement.setString(1, username);
+            pStatement.execute();
+            ResultSet rs = pStatement.executeQuery();
+
+            while (rs.next()) {
+                return true;
+            }
+            return false;
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return false;
+    }
+    
+    public String trazerPergunta(String username){
+        String sql = "SELECT * FROM USUARIO WHERE USERNAME = ?";
+
+//      Usuario usuario = new Usuario();
+        Connection connection = null;
+        try {
+            connection = Conexao.getInstance().getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(sql);
+            pStatement.setString(1, username);
+            pStatement.execute();
+            ResultSet rs = pStatement.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getString("PERGUNTA_REC");
+            }            
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+    
+    public Boolean conferirResposta(String username, String resposta){
+        String sql = "SELECT * FROM USUARIO WHERE USERNAME = ? AND RESPOSTA_REC = ?";
+
+        Connection connection = null;
+        try {
+            connection = Conexao.getInstance().getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(sql);
+            pStatement.setString(1, username);
+            pStatement.setString(2, resposta);
+            pStatement.execute();
+            ResultSet rs = pStatement.executeQuery();
+
+            while (rs.next()) {
+                return true;
+            }
+            return false;
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return false;
+    }
+    
     @Override
     public List<Usuario> listar() throws PersistenciaException {
         List<Usuario> usuarios = new ArrayList();
