@@ -5,29 +5,38 @@
 package com.mycompany.youorderproject.model;
 
 import com.mycompany.youorderproject.enums.TipoItem;
+import java.text.DecimalFormat;
 
 /**
  *
  * @author thais
  */
 public class Item {
-
+    private int id;
     private TipoItem tipo;
     private double preco;
     private String descricao;
     private Boolean ativoNoCardapio;
     private double tempoEstimadoPreparo; // em minutos
-    private int quantidade;
+    //private int quantidade;
 
-    public Item(TipoItem tipo, double preco, String descricao, Boolean ativoNoCardapio, double tempoEstimadoPreparo, int quantidade) throws  Exception{
+    public Item(int id, TipoItem tipo, double preco, String descricao, Boolean ativoNoCardapio, double tempoEstimadoPreparo) throws  Exception{
         this.tipo = tipo;
         this.preco = verificaPrecoInvalido(preco);
         this.descricao = verificaDescricaoVazia(descricao);
         this.ativoNoCardapio = ativoNoCardapio;
         this.tempoEstimadoPreparo = tempoEstimadoPreparo;
-        this.quantidade = quantidade;
+        //this.quantidade = quantidade;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getDescricao() {
         return descricao;
     }
@@ -68,13 +77,13 @@ public class Item {
         this.tempoEstimadoPreparo = tempoEstimadoPreparo;
     }
 
-    public int getQuantidade() {
-        return quantidade;
-    }
+    //public int getQuantidade() {
+    //    return quantidade;
+    //}
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
+    //public void setQuantidade(int quantidade) {
+    //    this.quantidade = quantidade;
+    //}
 
     private double verificaPrecoInvalido(double preco) throws Exception {
         if (preco <= 0) {
@@ -88,5 +97,11 @@ public class Item {
             throw new Exception("O item deve conter descrição.");
         }
         return descricao;
+    }
+    
+    @Override
+    public String toString() {
+        DecimalFormat fmt = new DecimalFormat("0.00");
+        return this.getDescricao() + " -- R$ " + fmt.format(this.getPreco());
     }
 }

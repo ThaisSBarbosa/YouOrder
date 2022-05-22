@@ -18,7 +18,7 @@ public class App extends Application {
     private static Stage stage;
     private static Scene scene;
     private static Stack<Scene> pilhaTelas;
-    public static ListView<String> listItensSelecionados; 
+    public static ListView<Object> listItensSelecionados; 
     
     @Override
     public void start(Stage stage) throws IOException {
