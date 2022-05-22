@@ -49,15 +49,15 @@ public class RecuperarSenhaController implements Initializable {
         UsuarioDAO usuario = new UsuarioDAO();
         if (usuario.conferirResposta(txtUsername.getText(), txtResposta.getText())) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("teste");
-            alert.setHeaderText("teste");
-            alert.setContentText("teste");
+            alert.setTitle("Recuperação de Senha");
+            alert.setHeaderText("Recuperação de Senha");
+            alert.setContentText("A sua senha é " + usuario.buscarSenha(txtUsername.getText()));
             alert.showAndWait();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("teste");
-            alert.setHeaderText("teste");
-            alert.setContentText("teste");
+            alert.setTitle("Erro");
+            alert.setHeaderText("Erro");
+            alert.setContentText("Não foi possível recuperar a sua senha.");
             alert.showAndWait();
         }
     }
