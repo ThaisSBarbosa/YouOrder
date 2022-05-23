@@ -20,12 +20,9 @@ public class App extends Application {
     private static Scene scene;
     private static Stack<Scene> pilhaTelas;
     public static ListView<Object> listItensSelecionados;
-<<<<<<< HEAD
 
-=======
     public static Usuario usuarioLogado;
     
->>>>>>> 06790bd9572cc2d94d2e8c7abb3a0e10dc2b1a6d
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("login"), 724, 486);

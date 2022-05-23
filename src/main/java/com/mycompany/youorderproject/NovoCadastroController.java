@@ -54,11 +54,8 @@ public class NovoCadastroController implements Initializable {
     @FXML
     private DatePicker dpNascimento;
     @FXML
-<<<<<<< HEAD
-=======
     private PasswordField txtConfirmarSenha;
     @FXML
->>>>>>> 06790bd9572cc2d94d2e8c7abb3a0e10dc2b1a6d
     private TextField txtPergunta;
     @FXML
     private TextField txtResposta;
