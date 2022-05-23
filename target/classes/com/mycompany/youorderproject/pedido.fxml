@@ -31,7 +31,7 @@
       </MenuBar>
       <Pane layoutX="19.0" layoutY="28.0" prefHeight="452.0" prefWidth="687.0" style="-fx-background-color: white; -fx-background-radius: 10px;">
          <children>
-            <ListView fx:id="listSelecionados" layoutX="19.0" layoutY="14.0" prefHeight="198.0" prefWidth="600.0" />
+            <ListView fx:id="listSelecionados" layoutX="19.0" layoutY="14.0" onMouseClicked="#listSelecionadosOnMouseClicked" prefHeight="198.0" prefWidth="600.0" />
             <Button fx:id="btnRemover" layoutX="91.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#btnRemoverOnMouseClicked" text="Remover Item">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -44,7 +44,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
             <Label layoutX="19.0" layoutY="250.0" text="Observação:" />
-            <TextArea fx:id="txtObservacao" layoutX="91.0" layoutY="250.0" prefHeight="47.0" prefWidth="528.0" />
+            <TextArea fx:id="txtObservacao" layoutX="91.0" layoutY="250.0" onKeyReleased="#txtObservacaoOnKeyReleased" prefHeight="47.0" prefWidth="528.0" />
             <Button fx:id="btnAjuda" layoutX="629.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#btnAjudaOnMouseClicked" prefHeight="43.0" prefWidth="45.0" style="-fx-background-radius: 100px;" text="?">
                <font>
                   <Font name="Franklin Gothic Heavy" size="25.0" />

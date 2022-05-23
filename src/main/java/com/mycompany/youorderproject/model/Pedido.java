@@ -23,9 +23,9 @@ public class Pedido {
     private LocalDateTime dataFinal;
     private int numeroMesa;
     private StatusPedido status;
-    private double valor;
+    //private double valor;
 
-    public Pedido(int id, Cliente cliente, LocalDateTime dataInicio, LocalDateTime dataFinal, int numeroMesa, StatusPedido status, double valor) throws Exception {
+    public Pedido(int id, Cliente cliente, LocalDateTime dataInicio, LocalDateTime dataFinal, int numeroMesa, StatusPedido status) throws Exception {
         this.id = id;
         this.cliente = verificaPedidoPossuiCliente(cliente);
         //this.itens = verificaPedidoPossuiItens(itens);
@@ -33,7 +33,7 @@ public class Pedido {
         this.dataFinal = dataFinal;
         this.numeroMesa = verificaMesaDiferenteDeZero(numeroMesa);
         this.status = status;
-        this.valor = verificaDescontoFidelidadeNoPedido(valor);
+        //this.valor = verificaDescontoFidelidadeNoPedido(valor);
     }
 
     public int getId() {
@@ -92,13 +92,13 @@ public class Pedido {
         this.status = status;
     }
 
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = verificaDescontoFidelidadeNoPedido(valor);
-    }
+//    public double getValor() {
+//        return valor;
+//    }
+//
+//    public void setValor(double valor) {
+//        this.valor = verificaDescontoFidelidadeNoPedido(valor);
+//    }
 
     public double getTempoTotalMinutos() {
         return ChronoUnit.MINUTES.between(this.getDataInicio(), this.getDataFinal());
@@ -126,7 +126,7 @@ public class Pedido {
     }
 
     private LocalDateTime verificaDataInicioMaiorQueDataAtual(LocalDateTime dataInicio) throws Exception {
-        if (ChronoUnit.MINUTES.between(dataInicio, LocalDateTime.now()) <= 0) {
+        if (ChronoUnit.MINUTES.between(dataInicio, LocalDateTime.now()) < 0) {
             throw new Exception("A data de início do pedido não deve ser maior que a data atual.");
         }
         return dataInicio;

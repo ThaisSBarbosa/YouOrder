@@ -1,5 +1,6 @@
 package com.mycompany.youorderproject.dao;
 
+import com.mycompany.youorderproject.enums.RestricaoAlimentar;
 import com.mycompany.youorderproject.exception.PersistenciaException;
 import com.mycompany.youorderproject.model.Cliente;
 import com.mycompany.youorderproject.model.Usuario;
@@ -7,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -49,16 +51,22 @@ public class ClienteDAO implements GenericoDAO<Cliente> {
 
     @Override
     public void inserir(Cliente cliente) throws PersistenciaException {
-        String sql = "INSERT INTO YOUORDER.CLIENTE (ID_USUARIO, REST_ALIMENTAR, QTD_PED_FIDELIDADE) VALUES (?)";
+        String sql = "INSERT INTO CLIENTE (ID_USUARIO, REST_ALIMENTAR, QTD_PED_FIDELIDADE) VALUES (?, ?, ?)";
 
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
-            PreparedStatement pStatement = connection.prepareStatement(sql);
+            PreparedStatement pStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pStatement.setInt(1, cliente.getId());
             pStatement.setInt(2, cliente.getRestricaoAlimentar().ordinal());
             pStatement.setInt(3, cliente.getQtdPedidosFidelidade());
             pStatement.execute();
+            try (ResultSet rs = pStatement.getGeneratedKeys()) {
+                if (rs.next()) {
+                    int id = rs.getInt(1);
+                    cliente.setIdCliente(id);
+                }
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new PersistenciaException("Não foi possível carregar o driver de conexão com a base de dados");
@@ -150,6 +158,43 @@ public class ClienteDAO implements GenericoDAO<Cliente> {
             }
         }
         return usuario;*/
+        return null;
+    }
+    
+    public Cliente getByUsuario(Usuario usuario){
+        String sql = "SELECT * FROM CLIENTE WHERE ID_USUARIO = ? FETCH FIRST 1 ROWS ONLY";
+
+        Connection connection = null;
+        try {
+            connection = Conexao.getInstance().getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(sql);
+            pStatement.setInt(1, usuario.getId());
+            pStatement.execute();
+
+            ResultSet rs = pStatement.executeQuery();
+
+            while (rs.next()) {
+                return new Cliente(
+                        rs.getInt("ID_CLIENTE"),
+                        usuario,
+                        RestricaoAlimentar.values()[rs.getInt("REST_ALIMENTAR")],
+                        rs.getInt("QTD_PED_FIDELIDADE"));
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
         return null;
     }
 }

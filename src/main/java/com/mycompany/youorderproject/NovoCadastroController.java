@@ -42,7 +42,7 @@ public class NovoCadastroController implements Initializable {
     private TextField txtNome;
     @FXML
     private ComboBox<String> cbRestricao;
-    private TextField txtEmail;
+
     @FXML
     private TextField txtEndereco;
     @FXML
@@ -54,6 +54,11 @@ public class NovoCadastroController implements Initializable {
     @FXML
     private DatePicker dpNascimento;
     @FXML
+<<<<<<< HEAD
+=======
+    private PasswordField txtConfirmarSenha;
+    @FXML
+>>>>>>> 06790bd9572cc2d94d2e8c7abb3a0e10dc2b1a6d
     private TextField txtPergunta;
     @FXML
     private TextField txtResposta;
@@ -79,6 +84,17 @@ public class NovoCadastroController implements Initializable {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         ClienteDAO clienteDAO = new ClienteDAO();
         
+        if(!txtSenha.getText().equals(txtConfirmarSenha.getText())){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erro");
+            alert.setHeaderText("Confirmação de senha");
+            alert.setContentText("As senhas digitadas não conferem. Por favor verifique as senhas e tente novamente.");
+            alert.showAndWait();
+            
+            return;
+        }
+
+        
         Usuario novoUsuario = new Usuario(
                 1,
                 txtNome.getText(), 
@@ -86,14 +102,23 @@ public class NovoCadastroController implements Initializable {
                 txtSenha.getText(), 
                 LocalDateTime.now(), 
                 dpNascimento.getValue().atStartOfDay(),
-                txtEndereco.getText());
+                txtEndereco.getText(),
+                txtPergunta.getText(),
+                txtResposta.getText());
 
         usuarioDAO.inserir(novoUsuario);
         
-        Cliente novoCliente = new Cliente(novoUsuario, RestricaoAlimentar.values()[cbRestricao.getSelectionModel().getSelectedIndex()], 0);
+        Cliente novoCliente = new Cliente(0, novoUsuario, RestricaoAlimentar.values()[cbRestricao.getSelectionModel().getSelectedIndex()], 0);
         
         clienteDAO.inserir(novoCliente);
-    }
+        
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Informação");
+            alert.setHeaderText("Criação de usuário");
+            alert.setContentText("O usuário foi criado com sucesso. Agora é só fazer o login!");
+            alert.showAndWait();
+            App.popRoot();
+        }
 
     @FXML
     private void btnVoltarOnMouseClicked(MouseEvent event) throws IOException {

@@ -14,8 +14,9 @@ public class Funcionario extends Usuario {
     private LocalDateTime dataContratacao;
 
     public Funcionario(LocalDateTime dataContratacao, int id, String nome, String userName, 
-            String senha, LocalDateTime ultimoAcesso, LocalDateTime dataNasc, String endereco) throws Exception{
-        super(id, nome, userName, senha, ultimoAcesso, dataNasc, endereco);
+            String senha, LocalDateTime ultimoAcesso, LocalDateTime dataNasc, String endereco,
+            String pergunta, String resposta) throws Exception{
+        super(id, nome, userName, senha, ultimoAcesso, dataNasc, endereco, pergunta, resposta);
         this.dataContratacao = dataContratacao;
     }
 
