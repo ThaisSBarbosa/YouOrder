@@ -1,8 +1,10 @@
 -----------------------------------------------------------------------------------------------
 --DROPS
 -----------------------------------------------------------------------------------------------
+DROP TABLE "MESA";
 DROP TABLE "ITEM_RESTRICAO";
-DROP TABLE "ITENS_PEDIDO";
+DROP TABLE "ITENS_PEDIDO"; --Devido a mudança de nome da tabela, mantido para deletar a com nome antigo
+DROP TABLE "ITEM_PEDIDO";
 DROP TABLE "ITEM";
 DROP TABLE "PEDIDO";
 
@@ -109,7 +111,7 @@ CREATE TABLE "PEDIDO"
         ON DELETE CASCADE
 );
 
-CREATE TABLE "ITENS_PEDIDO"
+CREATE TABLE "ITEM_PEDIDO"
 (    
    "ID_ITEM_PEDIDO" INT not null primary key
         GENERATED ALWAYS AS IDENTITY
@@ -117,6 +119,7 @@ CREATE TABLE "ITENS_PEDIDO"
    "ID_PEDIDO" INT,
    "ID_ITEM" INT,
    "QTD_ITEM" INT,
+   "OBSERVACAO" VARCHAR(200),
 
     FOREIGN KEY (ID_PEDIDO)
         REFERENCES PEDIDO(ID_PEDIDO)
@@ -125,6 +128,14 @@ CREATE TABLE "ITENS_PEDIDO"
     FOREIGN KEY (ID_ITEM)
         REFERENCES ITEM(ID_ITEM)
         ON DELETE CASCADE
+);
+
+CREATE TABLE "MESA"
+(    
+   "ID_MESA" INT not null primary key
+        GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),   
+   "STATUS" VARCHAR(10)    
 );
 
 -----------------------------------------------------------------------------------------------
@@ -183,5 +194,37 @@ INSERT INTO ITEM (TIPO_ITEM, PRECO, DESCRICAO, ATIVO_CARDAPIO, TEMPO_ESTIMADO)
            ,(2, 7.90, 'Fanta Uva', 'S', 30)
            ,(2, 7.90, 'Del Valle Maracujá', 'S', 30)
            ,(2, 4.90, 'Água sem Gás 500ml', 'S', 30)
-           ,(2, 4.90, 'Água com Gás 500ml', 'S', 30)
+           ,(2, 4.90, 'Água com Gás 500ml', 'S', 30);
 
+INSERT INTO MESA (STATUS) VALUES ('ATIVA')
+		,('ATIVA')
+		,('ATIVA')
+		,('ATIVA')
+		,('ATIVA')
+		,('MANUTENÇÃO')
+		,('ATIVA')
+		,('ATIVA')
+		,('MANUTENÇÃO')
+		,('MANUTENÇÃO')
+		,('ATIVA')
+		,('ATIVA')
+		,('ATIVA')
+		,('ATIVA')
+		,('ATIVA')
+		,('MANUTENÇÃO')
+		,('ATIVA')
+		,('ATIVA')
+		,('ATIVA')
+		,('ATIVA')
+		,('ATIVA')
+		,('ATIVA')
+		,('ATIVA')
+		,('ATIVA')
+		,('MANUTENÇÃO')
+		,('ATIVA')
+		,('ATIVA')
+		,('ATIVA')
+		,('MANUTENÇÃO')
+		,('ATIVA')
+		,('ATIVA')
+		,('ATIVA');
