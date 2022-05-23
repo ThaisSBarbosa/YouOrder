@@ -21,9 +21,15 @@ public enum PrecisoDeAjuda {
             return "Quero adicionar uma observação ao meu pedido";
         }
     },
+    NOVO_CADASTRO {
+        @Override
+        public String toString() {
+            return "Estou com dúvidas no preenchimento de novo cadastro.";
+        }
+    },
     FALAR_ATENDENTE {
         @Override
-        public String toString(){
+        public String toString() {
             return "Quero falar com um atendente";
         }
     };

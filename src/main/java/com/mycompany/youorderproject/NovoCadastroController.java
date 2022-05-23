@@ -53,6 +53,10 @@ public class NovoCadastroController implements Initializable {
     private TextField txtUsername;
     @FXML
     private DatePicker dpNascimento;
+    @FXML
+    private TextField txtPergunta;
+    @FXML
+    private TextField txtResposta;
 
     /**
      * Initializes the controller class.
