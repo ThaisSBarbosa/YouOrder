@@ -1,5 +1,6 @@
 package com.mycompany.youorderproject;
 
+import com.mycompany.youorderproject.model.Usuario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +19,8 @@ public class App extends Application {
     private static Stage stage;
     private static Scene scene;
     private static Stack<Scene> pilhaTelas;
-    public static ListView<Object> listItensSelecionados; 
+    public static ListView<Object> listItensSelecionados;
+    public static Usuario usuarioLogado;
     
     @Override
     public void start(Stage stage) throws IOException {
@@ -69,6 +71,11 @@ public class App extends Application {
     static void exibeTelaRecuperarSenha() throws IOException{
         App.setRoot("recuperarSenha", true);
     }
+    
+    static void exibeConfirmacaoPedido() throws IOException{
+        App.setRoot("confirmacaoPedido", true);
+    }
+
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
