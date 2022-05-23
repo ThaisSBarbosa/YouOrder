@@ -12,21 +12,36 @@ import java.time.LocalDateTime;
  * @author thais
  */
 public class Cliente extends Usuario {
+
+    private int idCliente;
+
     private RestricaoAlimentar restricaoAlimentar;
     private int qtdPedidosFidelidade;
 
-    public Cliente(RestricaoAlimentar restricaoAlimentar, int qtdPedidosFidelidade, int id, String nome, 
-                    String userName, String senha, LocalDateTime ultimoAcesso, 
-                    LocalDateTime dataNasc, String endereco) throws Exception{
-        super(id, nome, userName, senha, ultimoAcesso, dataNasc, endereco);
+    public Cliente(RestricaoAlimentar restricaoAlimentar, int qtdPedidosFidelidade, int id, String nome,
+            String userName, String senha, LocalDateTime ultimoAcesso,
+            LocalDateTime dataNasc, String endereco, String pergunta, String resposta) throws Exception {
+        super(id, nome, userName, senha, ultimoAcesso, dataNasc, endereco, pergunta, resposta);
         this.restricaoAlimentar = restricaoAlimentar;
         this.qtdPedidosFidelidade = qtdPedidosFidelidade;
     }
-    
-    public Cliente(Usuario usuario, RestricaoAlimentar restricaoAlimentar, int qtdPedidosFidelidade) throws Exception{
-        super(usuario.getId(), usuario.getNome(), usuario.getUserName(), usuario.getSenha(), usuario.getUltimoAcesso(), usuario.getDataNasc(), usuario.getEndereco());
+
+    public Cliente(int idCliente, Usuario usuario, RestricaoAlimentar restricaoAlimentar, int qtdPedidosFidelidade) throws Exception {
+
+        super(usuario.getId(), usuario.getNome(), usuario.getUserName(), usuario.getSenha(),
+                usuario.getUltimoAcesso(), usuario.getDataNasc(), usuario.getEndereco(),
+                usuario.getPergunta(), usuario.getResposta());
+        this.idCliente = idCliente;
         this.restricaoAlimentar = restricaoAlimentar;
         this.qtdPedidosFidelidade = qtdPedidosFidelidade;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public RestricaoAlimentar getRestricaoAlimentar() {

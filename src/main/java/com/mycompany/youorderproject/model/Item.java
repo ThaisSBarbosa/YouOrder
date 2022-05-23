@@ -21,6 +21,7 @@ public class Item {
     //private int quantidade;
 
     public Item(int id, TipoItem tipo, double preco, String descricao, Boolean ativoNoCardapio, double tempoEstimadoPreparo) throws  Exception{
+        this.id = id;
         this.tipo = tipo;
         this.preco = verificaPrecoInvalido(preco);
         this.descricao = verificaDescricaoVazia(descricao);

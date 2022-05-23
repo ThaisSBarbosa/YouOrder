@@ -56,7 +56,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button fx:id="btnConfirmarPedido" layoutX="44.0" layoutY="345.0" mnemonicParsing="false" onMouseClicked="#btnConfirmarPedidoOnMouseClicked" prefHeight="25.0" prefWidth="178.0" text="Confirmar pedido">
+                <Button fx:id="btnConfirmarPedido" layoutX="44.0" layoutY="345.0" mnemonicParsing="false" onMouseClicked="#btnConfirmarPedidoOnMouseClicked" prefHeight="25.0" prefWidth="178.0" text="Fechar pedido">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>

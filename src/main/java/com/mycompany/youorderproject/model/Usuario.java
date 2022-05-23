@@ -23,7 +23,7 @@ public class Usuario {
     private String endereco;
 
     public Usuario(int id, String nome, String userName, String senha, LocalDateTime ultimoAcesso, 
-                   LocalDateTime dataNasc, String endereco) throws Exception{
+                   LocalDateTime dataNasc, String endereco, String pergunta, String resposta) throws Exception{
         this.id = verificaIdDiferenteDeZero(id);
         this.nome = verificaNomeDiferenteDeVazio(nome);
         this.userName = verificaUserNameLimiteCaracteres(userName);
@@ -31,6 +31,8 @@ public class Usuario {
         this.ultimoAcesso = ultimoAcesso;
         this.dataNasc = dataNasc;
         this.endereco = endereco;
+        this.pergunta = pergunta;
+        this.resposta = resposta;
     }
 
     public Usuario() {

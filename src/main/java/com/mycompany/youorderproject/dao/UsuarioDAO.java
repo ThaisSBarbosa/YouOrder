@@ -16,7 +16,7 @@ import java.util.Date;
 
 public class UsuarioDAO implements GenericoDAO<Usuario> {
 
-    public Boolean validarLogin(String username, String senha) {
+    public Usuario validarLogin(String username, String senha) {
         String sql = "SELECT * FROM USUARIO WHERE USERNAME = ? AND SENHA = ? FETCH FIRST 1 ROWS ONLY";
 
         Connection connection = null;
@@ -29,72 +29,17 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
             ResultSet rs = pStatement.executeQuery();
 
             while (rs.next()) {
-                return true;
+                return new Usuario(
+                        rs.getInt("ID_USUARIO"),
+                        rs.getString("NOME"),
+                        rs.getString("USERNAME"),
+                        rs.getString("SENHA"),
+                        rs.getTimestamp("ULT_ACESSO").toLocalDateTime(),
+                        rs.getTimestamp("DATA_NASC").toLocalDateTime(),
+                        rs.getString("ENDERECO"),
+                        rs.getString("PERGUNTA_REC"),
+                        rs.getString("RESPOSTA_REC"));
             }
-            return false;
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                connection.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return false;
-    }
-
-    public Boolean buscarUsuario(String username){
-        String sql = "SELECT * FROM USUARIO WHERE USERNAME = ?";
-
-        Connection connection = null;
-        try {
-            connection = Conexao.getInstance().getConnection();
-            PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, username);
-            pStatement.execute();
-            ResultSet rs = pStatement.executeQuery();
-
-            while (rs.next()) {
-                return true;
-            }
-            return false;
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                connection.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return false;
-    }
-    
-    public String trazerPergunta(String username){
-        String sql = "SELECT * FROM USUARIO WHERE USERNAME = ?";
-
-        Connection connection = null;
-        try {
-            connection = Conexao.getInstance().getConnection();
-            PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, username);
-            pStatement.execute();
-            ResultSet rs = pStatement.executeQuery();
-            
-            if (rs.next()) {
-                return rs.getString("PERGUNTA_REC");
-            }            
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -111,8 +56,71 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
         }
         return null;
     }
-    
-    public Boolean conferirResposta(String username, String resposta){
+
+    public Boolean buscarUsuario(String username) {
+        String sql = "SELECT * FROM USUARIO WHERE USERNAME = ?";
+
+        Connection connection = null;
+        try {
+            connection = Conexao.getInstance().getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(sql);
+            pStatement.setString(1, username);
+            pStatement.execute();
+            ResultSet rs = pStatement.executeQuery();
+
+            while (rs.next()) {
+                return true;
+            }
+            return false;
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return false;
+    }
+
+    public String trazerPergunta(String username) {
+        String sql = "SELECT * FROM USUARIO WHERE USERNAME = ?";
+
+        Connection connection = null;
+        try {
+            connection = Conexao.getInstance().getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(sql);
+            pStatement.setString(1, username);
+            pStatement.execute();
+            ResultSet rs = pStatement.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("PERGUNTA_REC");
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
+    public Boolean conferirResposta(String username, String resposta) {
         String sql = "SELECT * FROM USUARIO WHERE USERNAME = ? AND RESPOSTA_REC = ?";
 
         Connection connection = null;
@@ -144,8 +152,8 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
         }
         return false;
     }
-    
-    public String buscarSenha(String username){
+
+    public String buscarSenha(String username) {
         String sql = "SELECT * FROM USUARIO WHERE USERNAME = ?";
 
         Connection connection = null;
@@ -155,10 +163,10 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
             pStatement.setString(1, username);
             pStatement.execute();
             ResultSet rs = pStatement.executeQuery();
-            
+
             if (rs.next()) {
                 return rs.getString("SENHA");
-            }            
+            }
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -175,7 +183,7 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
         }
         return null;
     }
-    
+
     @Override
     public List<Usuario> listar() throws PersistenciaException {
         List<Usuario> usuarios = new ArrayList();
@@ -193,7 +201,9 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
                         result.getString("SENHA"),
                         LocalDateTime.parse(result.getString("ULT_ACESSO")),
                         LocalDateTime.parse(result.getString("DATA_NASC")),
-                        result.getString("ENDERECO")
+                        result.getString("ENDERECO"),
+                        result.getString("PERGUNTA_REC"),
+                        result.getString("RESPOSTA_REC")
                 ));
 
             }
@@ -227,7 +237,7 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
-            PreparedStatement pStatement = connection.prepareStatement(sql);
+            PreparedStatement pStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pStatement.setString(1, usuario.getNome());
             pStatement.setString(2, usuario.getUserName());
             pStatement.setString(3, usuario.getSenha());
@@ -235,10 +245,12 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
             pStatement.setDate(5, java.sql.Date.valueOf(usuario.getDataNasc().toLocalDate()));
             pStatement.setString(6, String.valueOf(usuario.getEndereco()));
             pStatement.execute();
-            ResultSet rs = pStatement.getGeneratedKeys();
-            if (rs.next()) {
-                usuario.setId(rs.getInt(1));
 
+            try (ResultSet rs = pStatement.getGeneratedKeys()) {
+                if (rs.next()) {
+                    int id = rs.getInt(1);
+                    usuario.setId(id);
+                }
             }
 
         } catch (ClassNotFoundException ex) {
