@@ -60,24 +60,24 @@ public class UsuarioTest {
     private Cliente criaUsuarioFicticio() throws Exception {
         return new Cliente(RestricaoAlimentar.LOW_CARB, 3, 1, "Maria da Silva", "msilva", "sgyfdys749",
                 LocalDateTime.now(), LocalDateTime.parse("1998-01-26 00:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
-                "Rua Serra, 345");
+                "Rua Serra, 345", "pergunta", "resposta");
     }
 
     private Cliente criaUsuarioSemId() throws Exception {
         return new Cliente(RestricaoAlimentar.LOW_CARB, 3, 0, "Maria da Silva", "msilva", "sgyfdys749",
                 LocalDateTime.now(), LocalDateTime.parse("1998-01-26 00:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
-                "Rua Serra, 345");
+                "Rua Serra, 345", "pergunta", "resposta");
     }
 
     private Cliente criaUsuarioSemNome() throws Exception {
         return new Cliente(RestricaoAlimentar.LOW_CARB, 3, 1, "", "msilva", "sgyfdys749",
                 LocalDateTime.now(), LocalDateTime.parse("1998-01-26 00:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
-                "Rua Serra, 345");
+                "Rua Serra, 345", "pergunta", "resposta");
     }
 
     private Cliente criaUsuarioUsernameMaiorQueLimiteCaracteres() throws Exception {
         return new Cliente(RestricaoAlimentar.LOW_CARB, 3, 1, "Maria da Silva", "msilva_msilva", "sgyfdys749",
                 LocalDateTime.now(), LocalDateTime.parse("1998-01-26 00:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
-                "Rua Serra, 345");
+                "Rua Serra, 345", "pergunta", "resposta");
     }
 }

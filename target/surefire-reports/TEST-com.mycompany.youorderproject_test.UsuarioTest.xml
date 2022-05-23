@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.mycompany.youorderproject_test.UsuarioTest" time="0.019" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.mycompany.youorderproject_test.UsuarioTest" time="0.057" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="BR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17.0.2\bin"/>
-    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\thais\AppData\Local\Temp\surefire15229487635293195023 2022-05-22T20-09-49_801-jvmRun1 surefire7885844368573455834tmp surefire_010239194413512131459tmp"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\thais\AppData\Local\Temp\surefire1928579462100710679 2022-05-23T00-23-42_693-jvmRun1 surefire3316087445765567857tmp surefire_016611788129845286184tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="D:\EC6\Projeto Interdisciplinar\YouOrderProject\target\test-classes;C:\Users\thais\.m2\repository\org\apache\derby\derby\10.14.2.0\derby-10.14.2.0.jar;C:\Users\thais\.m2\repository\org\apache\derby\derbyclient\10.14.2.0\derbyclient-10.14.2.0.jar;C:\Users\thais\.m2\repository\org\apache\derby\derbytools\10.14.2.0\derbytools-10.14.2.0.jar;C:\Users\thais\.m2\repository\org\openjfx\javafx-controls\13\javafx-controls-13.jar;C:\Users\thais\.m2\repository\org\openjfx\javafx-graphics\13\javafx-graphics-13.jar;C:\Users\thais\.m2\repository\org\openjfx\javafx-base\13\javafx-base-13.jar;C:\Users\thais\.m2\repository\org\openjfx\javafx-fxml\13\javafx-fxml-13.jar;C:\Users\thais\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.2\junit-jupiter-5.8.2.jar;C:\Users\thais\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\thais\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\thais\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\thais\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\thais\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.2\junit-jupiter-params-5.8.2.jar;C:\Users\thais\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\thais\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -58,7 +58,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="usernameDeveObedecerLimiteCaracteres" classname="com.mycompany.youorderproject_test.UsuarioTest" time="0"/>
+  <testcase name="usernameDeveObedecerLimiteCaracteres" classname="com.mycompany.youorderproject_test.UsuarioTest" time="0.035"/>
   <testcase name="usuarioNaoDeveSerCadastradoSemId" classname="com.mycompany.youorderproject_test.UsuarioTest" time="0.017"/>
   <testcase name="usuarioNaoDeveSerCadastradoSemNome" classname="com.mycompany.youorderproject_test.UsuarioTest" time="0.002"/>
 </testsuite>

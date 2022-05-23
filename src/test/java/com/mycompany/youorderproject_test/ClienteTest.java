@@ -37,6 +37,6 @@ public class ClienteTest {
     private Cliente criaClienteFicticio() throws Exception {
         return new Cliente(RestricaoAlimentar.LOW_CARB, 3, 1, "Maria da Silva", "msilva", "sgyfdys749",
                 LocalDateTime.now(), LocalDateTime.parse("1998-01-26 00:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
-                "Rua Serra, 345");
+                "Rua Serra, 345", "pergunta", "resposta");
     }
 }
