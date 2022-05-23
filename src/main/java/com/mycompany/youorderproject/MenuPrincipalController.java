@@ -41,8 +41,7 @@ public class MenuPrincipalController implements Initializable {
     }    
 
     @FXML
-    private void btnAtualizarCadastroOnMouseClicked(MouseEvent event) throws IOException {
-        App.exibeTelaAtualizarCadastro();
+    private void btnAtualizarCadastroOnMouseClicked(MouseEvent event) {
     }
 
     @FXML

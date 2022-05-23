@@ -20,7 +20,6 @@ public class App extends Application {
     private static Scene scene;
     private static Stack<Scene> pilhaTelas;
     public static ListView<Object> listItensSelecionados;
-
     public static Usuario usuarioLogado;
     
     @Override
@@ -33,48 +32,43 @@ public class App extends Application {
     }
 
     static void setRoot(String fxml, Boolean stackLast) throws IOException {
-        if (stackLast) {
+        if(stackLast)
             pilhaTelas.push(scene);
-        }
-
+        
         scene = new Scene(loadFXML(fxml), 724, 486);
         stage.setScene(scene);
     }
-
-    static void popRoot() {
+    
+    static void popRoot(){
         scene = pilhaTelas.pop();
         stage.setScene(scene);
     }
-
-    static void exibeTelaAtualizarCadastro() throws IOException {
-        App.setRoot("atualizarCadastro", true);
-    }
-
-    static void exibeTelaLogin() throws IOException {
+    
+    static void exibeTelaLogin() throws IOException{
         App.setRoot("login", true);
     }
-
-    static void exibeTelaDeAjuda() throws IOException {
+    
+    static void exibeTelaDeAjuda() throws IOException{
         App.setRoot("precisoDeAjuda", true);
     }
-
-    static void exibeMenuPrincipal() throws IOException {
+    
+    static void exibeMenuPrincipal() throws IOException{
         App.setRoot("menuPrincipal", true);
     }
-
-    static void exibeTelaDeNovoCadastro() throws IOException {
+    
+    static void exibeTelaDeNovoCadastro() throws IOException{
         App.setRoot("novoCadastro", true);
     }
-
-    static void exibeTelaDeCardapio() throws IOException {
+    
+    static void exibeTelaDeCardapio() throws IOException{
         App.setRoot("cardapio", true);
     }
-
-    static void exibeTelaPedido() throws IOException {
+    
+    static void exibeTelaPedido() throws IOException{
         App.setRoot("pedido", true);
     }
-
-    static void exibeTelaRecuperarSenha() throws IOException {
+    
+    static void exibeTelaRecuperarSenha() throws IOException{
         App.setRoot("recuperarSenha", true);
     }
     
