@@ -8,22 +8,25 @@ package com.mycompany.youorderproject.model;
  *
  * @author carlo
  */
-public class ItensPedido {
+public class ItemPedido {
+
     private int id;
     private int idPedido;
     private int idItem;
     private int qtdItem;
+    private String observacao;
 
-    public ItensPedido() {
+    public ItemPedido() {
     }
 
-    public ItensPedido(int id, int idPedido, int idItem, int qtdItem) {
+    public ItemPedido(int id, int idPedido, int idItem, int qtdItem, String observacao) {
         this.id = id;
         this.idPedido = idPedido;
         this.idItem = idItem;
         this.qtdItem = qtdItem;
+        this.observacao = observacao;
     }
-        
+
     public int getId() {
         return id;
     }
@@ -54,5 +57,13 @@ public class ItensPedido {
 
     public void setQtdItem(int qtdItem) {
         this.qtdItem = qtdItem;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 }
