@@ -41,7 +41,9 @@ public class RecuperarSenhaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        lblPergunta.setVisible(false);
+        txtResposta.setVisible(false);
+        btnEnviar.setVisible(false);
     }
 
     @FXML
@@ -67,11 +69,14 @@ public class RecuperarSenhaController implements Initializable {
         UsuarioDAO usuario = new UsuarioDAO();
         if (usuario.buscarUsuario(txtUsername.getText())) {
             lblPergunta.setText(usuario.trazerPergunta(txtUsername.getText()));
+            lblPergunta.setVisible(true);
+            txtResposta.setVisible(true);
+            btnEnviar.setVisible(true);
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("teste");
-            alert.setHeaderText("teste");
-            alert.setContentText("teste");
+            alert.setTitle("Erro");
+            alert.setHeaderText("Erro");
+            alert.setContentText("Usuário não encontrado");
             alert.showAndWait();
         }
     }

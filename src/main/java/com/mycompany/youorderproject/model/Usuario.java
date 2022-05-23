@@ -34,6 +34,17 @@ public class Usuario {
         this.pergunta = pergunta;
         this.resposta = resposta;
     }
+    
+    public Usuario(String nome, String userName, String senha, 
+            LocalDateTime dataNasc, String endereco, String pergunta, String resposta) throws Exception{
+        this.nome = verificaNomeDiferenteDeVazio(nome);
+        this.userName = verificaUserNameLimiteCaracteres(userName);
+        this.senha = senha;
+        this.dataNasc = dataNasc;
+        this.endereco = endereco;
+        this.pergunta = pergunta;
+        this.resposta = resposta;
+    }
 
     public Usuario() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

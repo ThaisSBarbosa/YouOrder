@@ -77,45 +77,44 @@ public class NovoCadastroController implements Initializable {
 
     @FXML
     private void btnRegistrarOnMouseClicked(MouseEvent event) throws PersistenciaException, Exception {
-        
+
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         ClienteDAO clienteDAO = new ClienteDAO();
-        
-        if(!txtSenha.getText().equals(txtConfirmarSenha.getText())){
+
+        if (!txtSenha.getText().equals(txtConfirmarSenha.getText())) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Erro");
             alert.setHeaderText("Confirmação de senha");
             alert.setContentText("As senhas digitadas não conferem. Por favor verifique as senhas e tente novamente.");
             alert.showAndWait();
-            
+
             return;
         }
 
-        
         Usuario novoUsuario = new Usuario(
                 1,
-                txtNome.getText(), 
+                txtNome.getText(),
                 txtUsername.getText(),
-                txtSenha.getText(), 
-                LocalDateTime.now(), 
+                txtSenha.getText(),
+                LocalDateTime.now(),
                 dpNascimento.getValue().atStartOfDay(),
                 txtEndereco.getText(),
                 txtPergunta.getText(),
                 txtResposta.getText());
 
         usuarioDAO.inserir(novoUsuario);
-        
+
         Cliente novoCliente = new Cliente(0, novoUsuario, RestricaoAlimentar.values()[cbRestricao.getSelectionModel().getSelectedIndex()], 0);
-        
+
         clienteDAO.inserir(novoCliente);
-        
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Informação");
-            alert.setHeaderText("Criação de usuário");
-            alert.setContentText("O usuário foi criado com sucesso. Agora é só fazer o login!");
-            alert.showAndWait();
-            App.popRoot();
-        }
+        alert.setTitle("Informação");
+        alert.setHeaderText("Criação de usuário");
+        alert.setContentText("O usuário foi criado com sucesso. Agora é só fazer o login!");
+        alert.showAndWait();
+        App.popRoot();
+    }
 
     @FXML
     private void btnVoltarOnMouseClicked(MouseEvent event) throws IOException {
@@ -126,5 +125,4 @@ public class NovoCadastroController implements Initializable {
     private void btnAjudaOnMouseClicked(MouseEvent event) throws IOException {
         App.exibeTelaDeAjuda();
     }
-
 }

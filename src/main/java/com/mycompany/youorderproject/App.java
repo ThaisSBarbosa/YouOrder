@@ -21,7 +21,11 @@ public class App extends Application {
     private static Stack<Scene> pilhaTelas;
     public static ListView<Object> listItensSelecionados;
     public static Usuario usuarioLogado;
-    
+
+    static void usuarioLogado() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("login"), 724, 486);
@@ -32,50 +36,54 @@ public class App extends Application {
     }
 
     static void setRoot(String fxml, Boolean stackLast) throws IOException {
-        if(stackLast)
+        if (stackLast) {
             pilhaTelas.push(scene);
-        
+        }
+
         scene = new Scene(loadFXML(fxml), 724, 486);
         stage.setScene(scene);
     }
-    
-    static void popRoot(){
+
+    static void popRoot() {
         scene = pilhaTelas.pop();
         stage.setScene(scene);
     }
-    
-    static void exibeTelaLogin() throws IOException{
+
+    static void exibeTelaLogin() throws IOException {
         App.setRoot("login", true);
     }
-    
-    static void exibeTelaDeAjuda() throws IOException{
+
+    static void exibeTelaDeAjuda() throws IOException {
         App.setRoot("precisoDeAjuda", true);
     }
-    
-    static void exibeMenuPrincipal() throws IOException{
+
+    static void exibeMenuPrincipal() throws IOException {
         App.setRoot("menuPrincipal", true);
     }
-    
-    static void exibeTelaDeNovoCadastro() throws IOException{
+
+    static void exibeTelaDeNovoCadastro() throws IOException {
         App.setRoot("novoCadastro", true);
     }
-    
-    static void exibeTelaDeCardapio() throws IOException{
-        App.setRoot("cardapio", true);
-    }
-    
-    static void exibeTelaPedido() throws IOException{
-        App.setRoot("pedido", true);
-    }
-    
-    static void exibeTelaRecuperarSenha() throws IOException{
-        App.setRoot("recuperarSenha", true);
-    }
-    
-    static void exibeConfirmacaoPedido() throws IOException{
-        App.setRoot("confirmacaoPedido", true);
+
+    static void exibeTelaDeAtualizarCadastro() throws IOException {
+        App.setRoot("atualizarCadastro", true);
     }
 
+    static void exibeTelaDeCardapio() throws IOException {
+        App.setRoot("cardapio", true);
+    }
+
+    static void exibeTelaPedido() throws IOException {
+        App.setRoot("pedido", true);
+    }
+
+    static void exibeTelaRecuperarSenha() throws IOException {
+        App.setRoot("recuperarSenha", true);
+    }
+
+    static void exibeConfirmacaoPedido() throws IOException {
+        App.setRoot("confirmacaoPedido", true);
+    }
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
