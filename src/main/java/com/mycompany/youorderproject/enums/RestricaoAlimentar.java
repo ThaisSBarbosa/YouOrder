@@ -9,6 +9,12 @@ package com.mycompany.youorderproject.enums;
  * @author carlo
  */
 public enum RestricaoAlimentar {
+    VAZIO{
+        @Override
+        public String toString(){
+            return "";
+        }
+    },
     SEM_RESTRICAO {
         @Override
         public String toString() {

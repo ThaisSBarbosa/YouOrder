@@ -21,6 +21,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -59,6 +60,22 @@ public class NovoCadastroController implements Initializable {
     private TextField txtPergunta;
     @FXML
     private TextField txtResposta;
+    @FXML
+    private Label lblErroNome;
+    @FXML
+    private Label lblErroUsername;
+    @FXML
+    private Label lblErroDataNascimento;
+    @FXML
+    private Label lblErroSenha;
+    @FXML
+    private Label lblErroPergunta;
+    @FXML
+    private Label lblErroResposta;
+    @FXML
+    private Label lblErroEndereco;
+    @FXML
+    private Label lblErroRestricaoAlimentar;
 
     /**
      * Initializes the controller class.
@@ -73,6 +90,15 @@ public class NovoCadastroController implements Initializable {
 
         cbRestricao.getSelectionModel().selectFirst();
         cbSexo.getSelectionModel().selectFirst();
+
+        lblErroSenha.setVisible(false);
+        lblErroNome.setVisible(false);
+        lblErroUsername.setVisible(false);
+        lblErroDataNascimento.setVisible(false);
+        lblErroPergunta.setVisible(false);
+        lblErroResposta.setVisible(false);
+        lblErroRestricaoAlimentar.setVisible(false);
+        lblErroEndereco.setVisible(false);
     }
 
     @FXML
@@ -81,14 +107,49 @@ public class NovoCadastroController implements Initializable {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         ClienteDAO clienteDAO = new ClienteDAO();
 
-        if (!txtSenha.getText().equals(txtConfirmarSenha.getText())) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Erro");
-            alert.setHeaderText("Confirmação de senha");
-            alert.setContentText("As senhas digitadas não conferem. Por favor verifique as senhas e tente novamente.");
-            alert.showAndWait();
+        if (txtNome.getText().isEmpty()) {
+            lblErroNome.setText("Preencher o campo");
+            lblErroNome.setVisible(true);
+        }
 
-            return;
+        if (!txtNome.getText().matches("/[^0-9]/g")) {
+            lblErroNome.setText("O campo não pode conter números");
+            lblErroNome.setVisible(true);
+        }
+
+        if (txtUsername.getText().isEmpty()) {
+            lblErroUsername.setText("Preencher o campo");
+            lblErroUsername.setVisible(true);
+        }
+
+        if (usuarioDAO.buscarUsuario(txtUsername.getText())) {
+            lblErroUsername.setText("Username já existe");
+            lblErroUsername.setVisible(true);
+        }
+
+        if (!txtSenha.getText().equals(txtConfirmarSenha.getText())) {
+            lblErroSenha.setText("As senhas digitadas não conferem");
+            lblErroSenha.setVisible(true);
+        }
+
+        if (txtPergunta.getText().isEmpty() | txtPergunta.getText().isBlank()) {
+            lblErroPergunta.setText("Preencher o campo");
+            lblErroPergunta.setVisible(true);
+        }
+
+        if (txtResposta.getText().isEmpty() | txtResposta.getText().isBlank()) {
+            lblErroResposta.setText("Preencher o campo");
+            lblErroResposta.setVisible(true);
+        }
+
+        if (txtEndereco.getText().isEmpty() | txtEndereco.getText().isBlank()) {
+            lblErroEndereco.setText("Preencher o campo");
+            lblErroEndereco.setVisible(true);
+        }
+
+        if (cbRestricao.getSelectionModel().isSelected(0)) {
+            lblErroRestricaoAlimentar.setText("Selecione uma opção");
+            lblErroRestricaoAlimentar.setVisible(true);
         }
 
         Usuario novoUsuario = new Usuario(
