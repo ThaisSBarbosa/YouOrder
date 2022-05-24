@@ -4,10 +4,12 @@ package com.mycompany.youorderproject;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
+import com.mycompany.youorderproject.dao.ClienteDAO;
 import com.mycompany.youorderproject.dao.ItemDAO;
-import com.mycompany.youorderproject.enums.TipoItem;
+import com.mycompany.youorderproject.enums.RestricaoAlimentar;
 import com.mycompany.youorderproject.exception.PersistenciaException;
 import com.mycompany.youorderproject.model.Item;
+import com.mycompany.youorderproject.model.Cliente;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -24,7 +26,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 
 /**
  * FXML Controller class
@@ -59,9 +60,14 @@ public class CardapioController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         ItemDAO itemDAO = new ItemDAO();
         itens = null;
+        
+        RestricaoAlimentar restricao = retornaRestricaoClienteLogado();
 
         try {
-            itens = itemDAO.listar();
+            if(restricao == RestricaoAlimentar.SEM_RESTRICAO || restricao == RestricaoAlimentar.VAZIO || restricao == null)
+                itens = itemDAO.listar();
+            else
+                itens = itemDAO.listarPorRestricao(restricao);            
         } catch (PersistenciaException ex) {
             Logger.getLogger(CardapioController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -98,6 +104,12 @@ public class CardapioController implements Initializable {
             itens.add(item);
             listCardapio.getItems().add(item);
         }
+    }
+
+    private RestricaoAlimentar retornaRestricaoClienteLogado() {
+        ClienteDAO clienteDAO = new ClienteDAO();
+        Cliente cliente = clienteDAO.getByUsuario(App.usuarioLogado);
+        return  cliente.getRestricaoAlimentar();
     }
 
     @FXML

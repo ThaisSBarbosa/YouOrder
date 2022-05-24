@@ -79,7 +79,13 @@ CREATE TABLE "ITEM"
    "PRECO" DOUBLE,
    "DESCRICAO" VARCHAR(100),
    "ATIVO_CARDAPIO" CHAR,
-   "TEMPO_ESTIMADO" DOUBLE
+   "TEMPO_ESTIMADO" DOUBLE,
+   "VEGETARIANO" BOOLEAN NOT NULL DEFAULT FALSE,
+   "VEGANO" BOOLEAN NOT NULL DEFAULT FALSE,
+   "INTOL_LACTOSE" BOOLEAN NOT NULL DEFAULT FALSE,
+   "INTOL_GLUTEN" BOOLEAN NOT NULL DEFAULT FALSE,
+   "LOW_CARB" BOOLEAN NOT NULL DEFAULT FALSE,
+   "FITNESS" BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE "ITEM_RESTRICAO"
@@ -163,47 +169,42 @@ INSERT INTO FUNCIONARIO (ID_USUARIO, DATA_CONTRATACAO) VALUES (3, '2021-05-21');
 
 INSERT INTO GERENTE (ID_USUARIO) VALUES (4);
 
-INSERT INTO ITEM (TIPO_ITEM, PRECO, DESCRICAO, ATIVO_CARDAPIO, TEMPO_ESTIMADO)
-    VALUES 
-            --PRATO PRINCIPAL
-            (1, 41.90, 'Baião de dois', 'S', 30)
-           ,(1, 37.90, 'Tilápia Grelhada', 'S', 30)
-           ,(1, 41.90, 'Feijão Tropeiro', 'S', 30)
-           ,(1, 34.90, 'Galinhada', 'S', 30)
-           ,(1, 43.90, 'Feijoada', 'S', 30)
-           ,(1, 40.90, 'Arroz Carreteiro', 'S', 30)
-           ,(1, 33.90, 'Escondidinho de Frango', 'S', 30)
-           ,(1, 43.90, 'Escondidinho de Carne Seca', 'S', 30)
-           ,(1, 31.90, 'Parmegiana de Berinjela', 'S', 30)
-           ,(1, 35.90, 'Parmegiana de Frango', 'S', 30)
-           ,(1, 32.90, 'Bowl Salada de Tofu', 'S', 30)
-           ,(1, 38.90, 'Moqueca Vegana de Couve Flor', 'S', 30)
-           ,(1, 38.90, 'Strogonoff Vegano', 'S', 30)
-            --APERITIVOS
-           ,(0, 49.90, 'Porção de Calabresa com Fritas', 'S', 30)
-           ,(0, 49.90, 'Porção de Calabresa com Mandioca Frita', 'S', 30)
-           ,(0, 30.00, 'Porção de Batata Frita', 'S', 30)
-           ,(0, 30.00, 'Porção de Batata Frita com Mandioca Frita', 'S', 30)
-           ,(0, 30.00, 'Porção de Polenta Frita', 'S', 30)
-           ,(0, 60.00, 'Porção de Contrafilé com Fritas', 'S', 30)
-            --SOBREMESAS
-           ,(3, 9.00, 'Brigadeirão', 'S', 30)
-           ,(3, 8.00, 'Mousse de Limão', 'S', 30)
-           ,(3, 8.00, 'Mousse de Maracujá', 'S', 30)
-           ,(3, 9.00, 'Pudim', 'S', 30)
-           ,(3, 15.00, 'Salada de Frutas', 'S', 30)
-           ,(3, 10.00, 'Brigadeiro de Colher com Paçoca', 'S', 30)
-           ,(3, 10.00, 'Pavê Vegano', 'S', 30)
-           --BEBIDAS
-           ,(2, 10.90, 'Suco de Laranja 500ml', 'S', 30)
-           ,(2, 10.90, 'Suco de Laranja 300ml', 'S', 30)
-           ,(2, 7.90, 'Coca-Cola lata', 'S', 30)
-           ,(2, 7.90, 'Sprite', 'S', 30)
-           ,(2, 7.90, 'Fanta Laranja', 'S', 30)
-           ,(2, 7.90, 'Fanta Uva', 'S', 30)
-           ,(2, 7.90, 'Del Valle Maracujá', 'S', 30)
-           ,(2, 4.90, 'Água sem Gás 500ml', 'S', 30)
-           ,(2, 4.90, 'Água com Gás 500ml', 'S', 30);
+INSERT INTO ITEM (TIPO_ITEM, PRECO, DESCRICAO, ATIVO_CARDAPIO, TEMPO_ESTIMADO, VEGETARIANO, VEGANO, INTOL_LACTOSE, INTOL_GLUTEN, LOW_CARB, FITNESS)
+ VALUES (1, 41.90, 'Baião de dois', 'S', 30, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),--PRATO PRINCIPAL
+           (1, 37.90, 'Tilápia Grelhada', 'S', 30, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE),
+           (1, 41.90, 'Feijão Tropeiro', 'S', 30, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE),
+           (1, 34.90, 'Galinhada', 'S', 30, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE),
+           (1, 43.90, 'Feijoada', 'S', 30, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE),
+           (1, 40.90, 'Arroz Carreteiro', 'S', 30, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE),
+           (1, 33.90, 'Escondidinho de Frango', 'S', 30, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE),
+           (1, 43.90, 'Escondidinho de Carne Seca', 'S', 30, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE),
+           (1, 31.90, 'Parmegiana de Berinjela', 'S', 30, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE),
+           (1, 35.90, 'Parmegiana de Frango', 'S', 30, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE),
+           (1, 32.90, 'Bowl Salada de Tofu', 'S', 30, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE),
+           (1, 38.90, 'Moqueca Vegana de Couve Flor', 'S', 30, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE),
+           (1, 38.90, 'Strogonoff Vegano', 'S', 30, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE),--APERITIVOS            
+           (0, 49.90, 'Porção de Calabresa com Fritas', 'S', 30, FALSE, FALSE, TRUE, TRUE, TRUE, FALSE),
+           (0, 49.90, 'Porção de Calabresa com Mandioca Frita', 'S', 30, FALSE, FALSE, TRUE, TRUE, TRUE, FALSE),
+           (0, 30.00, 'Porção de Batata Frita', 'S', 30, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE),
+           (0, 30.00, 'Porção de Batata Frita com Mandioca Frita', 'S', 30, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE),
+           (0, 30.00, 'Porção de Polenta Frita', 'S', 30, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE),
+           (0, 60.00, 'Porção de Contrafilé com Fritas', 'S', 30, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),          
+           (3, 9.00, 'Brigadeirão', 'S', 30, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE),--SOBREMESAS  
+           (3, 8.00, 'Mousse de Limão', 'S', 30, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE),
+           (3, 8.00, 'Mousse de Maracujá', 'S', 30, TRUE, FALSE, FALSE, TRUE, FALSE, FALSE),
+           (3, 9.00, 'Pudim', 'S', 30, TRUE, FALSE, FALSE, TRUE, FALSE, FALSE),
+           (3, 15.00, 'Salada de Frutas', 'S', 30, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE),
+           (3, 10.00, 'Brigadeiro de Colher com Paçoca', 'S', 30, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE),
+           (3, 10.00, 'Pavê Vegano', 'S', 30, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE),
+           (2, 10.90, 'Suco de Laranja 500ml', 'S', 30, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE),--BEBIDAS
+           (2, 10.90, 'Suco de Laranja 300ml', 'S', 30, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE),
+           (2, 7.90, 'Coca-Cola lata', 'S', 30, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE),
+           (2, 7.90, 'Sprite', 'S', 30, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE),
+           (2, 7.90, 'Fanta Laranja', 'S', 30, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE),
+           (2, 7.90, 'Fanta Uva', 'S', 30, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE),
+           (2, 7.90, 'Del Valle Maracujá', 'S', 30, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE),
+           (2, 4.90, 'Água sem Gás 500ml', 'S', 30, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE),
+           (2, 4.90, 'Água com Gás 500ml', 'S', 30, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE);
 
 INSERT INTO MESA (STATUS) VALUES ('ATIVA')
 		,('ATIVA')
