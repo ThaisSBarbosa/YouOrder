@@ -1,6 +1,7 @@
 -----------------------------------------------------------------------------------------------
 --DROPS
 -----------------------------------------------------------------------------------------------
+DROP TABLE "TIPO_AJUDA";
 DROP TABLE "MESA";
 DROP TABLE "ITEM_RESTRICAO";
 DROP TABLE "ITENS_PEDIDO"; --Devido a mudança de nome da tabela, mantido para deletar a com nome antigo
@@ -138,6 +139,14 @@ CREATE TABLE "MESA"
    "STATUS" VARCHAR(10)    
 );
 
+CREATE TABLE "TIPO_AJUDA"
+(    
+   "ID_AJUDA" INT not null primary key
+        GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),   
+   "DESC_AJUDA" VARCHAR(200)    
+);
+
 -----------------------------------------------------------------------------------------------
 --INSERTS
 -----------------------------------------------------------------------------------------------
@@ -228,3 +237,12 @@ INSERT INTO MESA (STATUS) VALUES ('ATIVA')
 		,('ATIVA')
 		,('ATIVA')
 		,('ATIVA');
+
+INSERT INTO TIPO_AJUDA (DESC_AJUDA) VALUES ('O meu pedido está atrasado!')
+                ,('Quero adicionar uma observação ao meu pedido!')
+                ,('Quero falar com um atendente!')
+                ,('Não estou conseguindo criar um cadastro!')
+                ,('Não estou conseguindo fazer um pedido!')
+                ,('Não me lembro da minha senha!')
+                ,('Quero dar uma gorjeta para os desenvolvedores desse software perfeito!');
+
