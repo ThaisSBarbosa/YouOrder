@@ -279,14 +279,13 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
 
     @Override
     public void alterar(Usuario usuario) throws PersistenciaException {
-        /*String sql = "UPDATE EMPRESA.CARGO SET NOME=? WHERE ID_CARGO = ?";
+        String sql = "UPDATE USUARIO SET NOME = ?, USERNAME = ?, SENHA = ?, ULT_ACESSO = ?, DATA_NASC = ?, ENDERECO WHERE USERNAME = ?";
 
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, usuario.getNome());
-            pStatement.setLong(2, usuario.getCodigo());
+            pStatement.setString(1, usuario.getUserName());
             pStatement.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -300,7 +299,7 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
             } catch (SQLException ex) {
                 Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }*/
+        }
     }
 
     @Override

@@ -24,7 +24,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Label layoutX="243.0" layoutY="35.0" text="Atualizar Cadastro">
+      <Label layoutX="258.0" layoutY="35.0" text="Atualizar Cadastro">
          <font>
             <Font size="29.0" />
          </font>
@@ -32,7 +32,7 @@
       <Label layoutX="109.0" layoutY="119.0" text="Nome:" />
       <TextField fx:id="txtNome" layoutX="160.0" layoutY="115.0" prefHeight="25.0" prefWidth="184.0" />
       <Label layoutX="313.0" layoutY="360.0" text="Restrição Alimentar" />
-      <Button fx:id="btnAtualizar" layoutX="290.0" layoutY="448.0" mnemonicParsing="false" onAction="#btnRegistrarOnMouseClicked" onMouseClicked="#btnRegistrarOnMouseClicked" prefHeight="25.0" prefWidth="149.0" text="Atualizar">
+      <Button fx:id="btnRegistrar" layoutX="290.0" layoutY="448.0" mnemonicParsing="false" onMouseClicked="#btnRegistrarOnMouseClicked" prefHeight="25.0" prefWidth="149.0" text="Registrar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -51,51 +51,51 @@
       </Button>
       <Label layoutX="375.0" layoutY="120.0" text="Username:" />
       <TextField fx:id="txtUsername" layoutX="439.0" layoutY="115.0" prefHeight="25.0" prefWidth="177.0" />
-      <Label layoutX="91.0" layoutY="317.0" text="Endereço:" />
-      <TextField fx:id="txtEndereco" layoutX="156.0" layoutY="313.0" prefHeight="25.0" prefWidth="460.0" />
+      <Label layoutX="91.0" layoutY="319.0" text="Endereço:" />
+      <TextField fx:id="txtEndereco" layoutX="156.0" layoutY="315.0" prefHeight="25.0" prefWidth="460.0" />
       <Label layoutX="109.0" layoutY="198.0" text="Senha:" />
       <PasswordField fx:id="txtSenha" layoutX="160.0" layoutY="194.0" prefHeight="25.0" prefWidth="184.0" />
       <Label layoutX="105.0" layoutY="158.0" text="Sexo" visible="false" />
       <ComboBox fx:id="cbSexo" layoutX="26.0" layoutY="173.0" prefHeight="25.0" prefWidth="184.0" visible="false" />
-      <DatePicker fx:id="dpNascimento" layoutX="159.0" layoutY="155.0" prefHeight="25.0" prefWidth="184.0" />
-      <Label layoutX="35.0" layoutY="159.0" text="Data de Nascimento:" />
+      <DatePicker fx:id="dpNascimento" layoutX="159.0" layoutY="156.0" prefHeight="25.0" prefWidth="184.0" />
+      <Label layoutX="35.0" layoutY="160.0" text="Data de Nascimento:" />
       <Label layoutX="368.0" layoutY="198.0" text="Conf. senha:" />
       <PasswordField fx:id="txtConfirmarSenha" layoutX="439.0" layoutY="194.0" prefHeight="25.0" prefWidth="177.0" />
-      <Label layoutX="52.0" layoutY="238.0" text="Pergunta secreta:" />
-      <TextField fx:id="txtPergunta" layoutX="156.0" layoutY="234.0" prefHeight="25.0" prefWidth="460.0" />
-      <Label layoutX="52.0" layoutY="277.0" text="Resposta secreta:" />
-      <TextField fx:id="txtResposta" layoutX="156.0" layoutY="273.0" prefHeight="25.0" prefWidth="460.0" />
+      <Label layoutX="52.0" layoutY="239.0" text="Pergunta secreta:" />
+      <TextField fx:id="txtPergunta" layoutX="156.0" layoutY="235.0" prefHeight="25.0" prefWidth="460.0" />
+      <Label layoutX="52.0" layoutY="278.0" text="Resposta secreta:" />
+      <TextField fx:id="txtResposta" layoutX="156.0" layoutY="274.0" prefHeight="25.0" prefWidth="460.0" />
       <Label fx:id="lblErroSenha" layoutX="161.0" layoutY="218.0" text="Erro" textFill="RED">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Label fx:id="lblErroNome" layoutX="161.0" layoutY="139.0" text="Erro" textFill="RED">
+      <Label fx:id="lblErroNome" layoutX="162.0" layoutY="139.0" text="Erro" textFill="RED">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Label fx:id="lblErroUsername" layoutX="439.0" layoutY="138.0" text="Erro" textFill="RED">
+      <Label fx:id="lblErroUsername" layoutX="440.0" layoutY="139.0" text="Erro" textFill="RED">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Label fx:id="lblErroDataNascimento" layoutX="160.0" layoutY="178.0" text="Erro" textFill="RED">
+      <Label fx:id="lblErroDataNascimento" layoutX="160.0" layoutY="179.0" text="Erro" textFill="RED">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Label fx:id="lblErroPergunta" layoutX="160.0" layoutY="259.0" text="Erro" textFill="RED">
+      <Label fx:id="lblErroPergunta" layoutX="158.0" layoutY="259.0" text="Erro" textFill="RED">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Label fx:id="lblErroResposta" layoutX="160.0" layoutY="298.0" text="Erro" textFill="RED">
+      <Label fx:id="lblErroResposta" layoutX="158.0" layoutY="298.0" text="Erro" textFill="RED">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Label fx:id="lblErroEndereco" layoutX="160.0" layoutY="338.0" text="Erro" textFill="RED">
+      <Label fx:id="lblErroEndereco" layoutX="158.0" layoutY="339.0" text="Erro" textFill="RED">
          <font>
             <Font size="9.0" />
          </font>

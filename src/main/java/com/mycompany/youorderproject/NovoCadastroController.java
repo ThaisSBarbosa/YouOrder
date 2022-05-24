@@ -112,10 +112,10 @@ public class NovoCadastroController implements Initializable {
             lblErroNome.setVisible(true);
         }
 
-        if (!txtNome.getText().matches("/[^0-9]/g")) {
-            lblErroNome.setText("O campo não pode conter números");
-            lblErroNome.setVisible(true);
-        }
+//        if (!txtNome.getText().matches("/[^0-9]/g")) {
+//            lblErroNome.setText("O campo não pode conter números");
+//            lblErroNome.setVisible(true);
+//        }
 
         if (txtUsername.getText().isEmpty()) {
             lblErroUsername.setText("Preencher o campo");

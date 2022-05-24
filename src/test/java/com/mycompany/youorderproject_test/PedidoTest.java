@@ -7,7 +7,7 @@ package com.mycompany.youorderproject_test;
 import com.mycompany.youorderproject.model.Cliente;
 import com.mycompany.youorderproject.enums.TipoItem;
 import com.mycompany.youorderproject.enums.StatusPedido;
-import com.mycompany.youorderproject.model.Item;
+//import com.mycompany.youorderproject.model.Item;
 import com.mycompany.youorderproject.model.Pedido;
 import com.mycompany.youorderproject.enums.RestricaoAlimentar;
 import com.mycompany.youorderproject.utils.Constantes;
@@ -24,13 +24,13 @@ import org.junit.jupiter.api.Test;
  */
 public class PedidoTest {
 
-    private final ArrayList<Item> itens;
+//    private final ArrayList<Item> itens;
     private final Cliente cliente;
     private final Pedido pedidoComItens;
     private final Pedido pedidoComClienteComQtdDescontoFidelidade;
 
     public PedidoTest() throws Exception {
-        this.itens = criaItensFicticios();
+        //this.itens = criaItensFicticios();
         this.cliente = criaClienteFicticio();
         this.pedidoComItens = criaPedidoComItens();
         this.pedidoComClienteComQtdDescontoFidelidade = criaPedidoComClienteComQtdDescontoFidelidade();
@@ -116,15 +116,15 @@ public class PedidoTest {
     /////////////////////////////////////////////
     // Construção da massa de dados dos testes.//
     /////////////////////////////////////////////
-    private ArrayList<Item> criaItensFicticios() throws Exception {
-        ArrayList<Item> itensFicticios = new ArrayList<Item>();
-
-        itensFicticios.add(new Item(99, TipoItem.PRATO_PRINCIPAL, 20, "Mega Barbecue", true, 10));
-        itensFicticios.add(new Item(88, TipoItem.BEBIDA, 20, "Suco de Laranja", true, 10));
-        itensFicticios.add(new Item(77, TipoItem.SOBREMESA, 20, "Mousse de Morango", true, 10));
-
-        return itensFicticios;
-    }
+//    private ArrayList<Item> criaItensFicticios() throws Exception {
+//        ArrayList<Item> itensFicticios = new ArrayList<Item>();
+//
+//        itensFicticios.add(new Item(99, TipoItem.PRATO_PRINCIPAL, 20, "Mega Barbecue", true, 10));
+//        itensFicticios.add(new Item(88, TipoItem.BEBIDA, 20, "Suco de Laranja", true, 10));
+//        itensFicticios.add(new Item(77, TipoItem.SOBREMESA, 20, "Mousse de Morango", true, 10));
+//
+//        return itensFicticios;
+//    }
 
     private Cliente criaClienteFicticio() throws Exception {
         return new Cliente(RestricaoAlimentar.LOW_CARB, 3, 1, "Maria da Silva", "msilva", "sgyfdys749",

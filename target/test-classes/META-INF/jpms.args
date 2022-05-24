@@ -1,4 +1,0 @@
---patch-module
-com.mycompany.youorderproject=_
---add-reads
-com.mycompany.youorderproject=ALL-UNNAMED
