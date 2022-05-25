@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.youorderproject.NovoCadastroController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.youorderproject.ItemCadastroController">
    <children>
       <ImageView fitHeight="486.0" fitWidth="731.0" layoutX="-7.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -61,24 +61,23 @@
       <TextField fx:id="txtPreco" layoutX="36.0" layoutY="176.0" prefHeight="25.0" prefWidth="153.0" />
       <Label layoutX="214.0" layoutY="158.0" text="Tempo Estimado de Preparo:" />
       <PasswordField fx:id="txtTempo" layoutX="209.0" layoutY="177.0" prefHeight="25.0" prefWidth="153.0" />
-      <Label layoutX="105.0" layoutY="158.0" text="Sexo" visible="false" />
       <ComboBox fx:id="cbSexo" layoutX="26.0" layoutY="173.0" prefHeight="25.0" prefWidth="184.0" visible="false" />
-      <Label fx:id="lblErroSenha" layoutX="216.0" layoutY="202.0" text="Erro" textFill="RED">
+      <Label fx:id="lblErroTempoPrep" layoutX="216.0" layoutY="202.0" text="Erro" textFill="RED">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Label fx:id="lblErroNome" layoutX="44.0" layoutY="132.0" text="Erro" textFill="RED">
+      <Label fx:id="lblErroDescricao" layoutX="44.0" layoutY="132.0" text="Erro" textFill="RED">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Label fx:id="lblErroUsername" layoutX="44.0" layoutY="201.0" text="Erro" textFill="RED">
+      <Label fx:id="lblErroPreco" layoutX="44.0" layoutY="201.0" text="Erro" textFill="RED">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Label fx:id="lblErroRestricaoAlimentar" layoutX="216.0" layoutY="134.0" text="Erro" textFill="RED">
+      <Label fx:id="lblTipo" layoutX="216.0" layoutY="134.0" text="Erro" textFill="RED">
          <font>
             <Font size="9.0" />
          </font>
