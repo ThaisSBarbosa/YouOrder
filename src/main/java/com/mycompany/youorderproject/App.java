@@ -62,6 +62,10 @@ public class App extends Application {
         App.setRoot("menuPrincipal", true);
     }
 
+    static void exibeMenuPrincipalFuncionario() throws IOException {
+        App.setRoot("menuPrincipalFuncionario", true);
+    }
+
     static void exibeTelaDeNovoCadastro() throws IOException {
         App.setRoot("novoCadastro", true);
     }

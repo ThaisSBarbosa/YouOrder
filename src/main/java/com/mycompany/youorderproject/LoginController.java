@@ -92,11 +92,7 @@ public class LoginController implements Initializable {
 
                     if (gerenteDAO.getByUsuarioFuncionario(usuario, funcionario) != null) {
                         App.isGerente = true;
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Implementação");
-                        alert.setHeaderText("Informação importante");
-                        alert.setContentText("Aqui deve ser a tela de gerente.");
-                        alert.showAndWait();
+                        App.exibeMenuPrincipalFuncionario();
                     }
                 }
             }
