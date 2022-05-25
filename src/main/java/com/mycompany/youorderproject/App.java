@@ -70,6 +70,10 @@ public class App extends Application {
         App.setRoot("novoCadastro", true);
     }
 
+    static void exibeTelaNovoItem() throws IOException {
+        App.setRoot("itemCadastro", true);
+    }
+
     static void exibeTelaDeAtualizarCadastro() throws IOException {
         App.setRoot("atualizarCadastro", true);
     }

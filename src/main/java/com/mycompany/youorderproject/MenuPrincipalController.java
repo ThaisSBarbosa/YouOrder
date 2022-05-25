@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 package com.mycompany.youorderproject;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,6 +26,8 @@ public class MenuPrincipalController implements Initializable {
     @FXML
     private Button btnMeusFavoritos;
     @FXML
+    private Button btnNovoItem;
+    @FXML
     private Button btnNovoPedido;
     @FXML
     private Button btnAjuda;
@@ -37,11 +40,11 @@ public class MenuPrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
-    private void btnAtualizarCadastroOnMouseClicked(MouseEvent event) throws IOException{
-            App.exibeTelaDeAtualizarCadastro();
+    private void btnAtualizarCadastroOnMouseClicked(MouseEvent event) throws IOException {
+        App.exibeTelaDeAtualizarCadastro();
     }
 
     @FXML
@@ -58,6 +61,11 @@ public class MenuPrincipalController implements Initializable {
     }
 
     @FXML
+    private void btnNovoItemOnMouseClicked(MouseEvent event) throws IOException {
+        App.exibeTelaNovoItem();
+    }
+    
+    @FXML
     private void btnAjudaOnMouseClicked(MouseEvent event) throws IOException {
         ExibirTelaDeAjuda();
     }
@@ -66,12 +74,12 @@ public class MenuPrincipalController implements Initializable {
     private void btnSairOnMouseClicked(MouseEvent event) {
         App.popRoot();
     }
-    
-    private void ExibirCardapio() throws IOException{
+
+    private void ExibirCardapio() throws IOException {
         App.exibeTelaDeCardapio();
     }
-    
-    private void ExibirTelaDeAjuda() throws IOException{
+
+    private void ExibirTelaDeAjuda() throws IOException {
         App.exibeTelaDeAjuda();
     }
 }
