@@ -21,6 +21,7 @@ public class App extends Application {
     private static Stack<Scene> pilhaTelas;
     public static ListView<Object> listItensSelecionados;
     public static Usuario usuarioLogado;
+    public static Boolean isGerente;
 
     static void usuarioLogado() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

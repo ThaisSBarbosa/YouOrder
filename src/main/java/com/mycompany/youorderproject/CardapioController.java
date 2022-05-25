@@ -50,24 +50,92 @@ public class CardapioController implements Initializable {
     private Button btnRemover;
     @FXML
     private Button btnConfirmarPedido;
-    
+
     private List<Item> itens;
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        RestricaoAlimentar restricao = retornaRestricaoClienteLogado();
+        BuscaItensCardapio(restricao);
+    }
+
+    private RestricaoAlimentar retornaRestricaoClienteLogado() {
+        ClienteDAO clienteDAO = new ClienteDAO();
+        Cliente cliente = clienteDAO.getByUsuario(App.usuarioLogado);
+        return cliente.getRestricaoAlimentar();
+    }
+
+    @FXML
+    private void btnAjudaOnMouseClicked(MouseEvent event) throws IOException {
+        App.exibeTelaDeAjuda();
+    }
+
+    @FXML
+    private void btnVoltarOnMouseClicked(MouseEvent event) {
+        App.popRoot();
+    }
+
+    @FXML
+    private void listCardapioOnMouseClicked(MouseEvent event) {
+        Item itemSelecionado = itens.get(listCardapio.getSelectionModel().getSelectedIndex());
+
+        if (itemSelecionado != null) {
+            lblItem.setText(itemSelecionado.getDescricao());
+        } else {
+            lblItem.setText("-");
+        }
+    }
+
+    @FXML
+    private void btnAdicionarOnMouseClicked(MouseEvent event) {
+        AdicionarItem();
+    }
+
+    @FXML
+    private void btnRemoverOnMouseClicked(MouseEvent event) {
+        listSelecionados.getItems().remove(listSelecionados.getSelectionModel().getSelectedIndex());
+    }
+
+    @FXML
+    private void btnConfirmarPedidoOnMouseClicked(MouseEvent event) throws IOException {
+        FecharPedido();
+    }
+
+    private void AdicionarItem() {
+        Item itemSelecionado = itens.get(listCardapio.getSelectionModel().getSelectedIndex());
+
+        if (itemSelecionado != null) {
+            listSelecionados.getItems().add(itemSelecionado);
+            listSelecionados.scrollTo(listSelecionados.getItems().size() - 1);
+        }
+    }
+
+    private void FecharPedido() throws IOException {
+        App.listItensSelecionados = listSelecionados;
+        try {
+            ExibirItensDoPedido();
+        } catch (IOException ex) {
+            Logger.getLogger(CardapioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void ExibirItensDoPedido() throws IOException{
+        App.exibeTelaPedido();
+    }
+
+    private void BuscaItensCardapio(RestricaoAlimentar perfilRestricao) {
         ItemDAO itemDAO = new ItemDAO();
         itens = null;
         
-        RestricaoAlimentar restricao = retornaRestricaoClienteLogado();
-
         try {
-            if(restricao == RestricaoAlimentar.SEM_RESTRICAO || restricao == RestricaoAlimentar.VAZIO || restricao == null)
+            if (perfilRestricao == RestricaoAlimentar.SEM_RESTRICAO || perfilRestricao == RestricaoAlimentar.VAZIO || perfilRestricao == null) {
                 itens = itemDAO.listar();
-            else
-                itens = itemDAO.listarPorRestricao(restricao);            
+            } else {
+                itens = itemDAO.listarPorRestricao(perfilRestricao);
+            }
         } catch (PersistenciaException ex) {
             Logger.getLogger(CardapioController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -77,11 +145,11 @@ public class CardapioController implements Initializable {
         int oldTipoItem = -1; //Já começar adicionando o primeiro tipo
 
         for (Item item : itens.stream().collect(Collectors.toList())) {
-            
-            if(oldTipoItem == -1){
+
+            if (oldTipoItem == -1) {
                 itens = new ArrayList<>();
             }
-            
+
             if (oldTipoItem != item.getTipo().ordinal()) {
                 oldTipoItem = item.getTipo().ordinal();
 
@@ -104,54 +172,6 @@ public class CardapioController implements Initializable {
             itens.add(item);
             listCardapio.getItems().add(item);
         }
-    }
-
-    private RestricaoAlimentar retornaRestricaoClienteLogado() {
-        ClienteDAO clienteDAO = new ClienteDAO();
-        Cliente cliente = clienteDAO.getByUsuario(App.usuarioLogado);
-        return  cliente.getRestricaoAlimentar();
-    }
-
-    @FXML
-    private void btnAjudaOnMouseClicked(MouseEvent event) throws IOException {
-        App.exibeTelaDeAjuda();
-    }
-
-    @FXML
-    private void btnVoltarOnMouseClicked(MouseEvent event) {
-        App.popRoot();
-    }
-
-    @FXML
-    private void listCardapioOnMouseClicked(MouseEvent event) {
-        Item itemSelecionado = itens.get(listCardapio.getSelectionModel().getSelectedIndex());
-        
-        if(itemSelecionado != null)
-            lblItem.setText(itemSelecionado.getDescricao());
-        else
-            lblItem.setText("-");
-    }
-
-    @FXML
-    private void btnAdicionarOnMouseClicked(MouseEvent event) {
-        Item itemSelecionado = itens.get(listCardapio.getSelectionModel().getSelectedIndex());
-        
-        if(itemSelecionado != null)
-        {    
-            listSelecionados.getItems().add(itemSelecionado);
-            listSelecionados.scrollTo(listSelecionados.getItems().size() - 1);
-        }
-    }
-
-    @FXML
-    private void btnRemoverOnMouseClicked(MouseEvent event) {
-        listSelecionados.getItems().remove(listSelecionados.getSelectionModel().getSelectedIndex());
-    }
-
-    @FXML
-    private void btnConfirmarPedidoOnMouseClicked(MouseEvent event) throws IOException {
-        App.listItensSelecionados = listSelecionados;
-        App.exibeTelaPedido();
     }
 
 }

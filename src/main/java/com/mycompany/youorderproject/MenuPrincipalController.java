@@ -54,7 +54,7 @@ public class MenuPrincipalController implements Initializable {
 
     @FXML
     private void btnNovoPedidoOnMouseClicked(MouseEvent event) throws IOException {
-        App.exibeTelaDeCardapio();
+        ExibirCardapio();
     }
 
     @FXML
@@ -67,4 +67,7 @@ public class MenuPrincipalController implements Initializable {
         App.popRoot();
     }
     
+    private void ExibirCardapio() throws IOException{
+        App.exibeTelaDeCardapio();
+    }
 }

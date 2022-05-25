@@ -81,6 +81,7 @@ public class LoginController implements Initializable {
             ClienteDAO clienteDAO = new ClienteDAO();
 
             if (clienteDAO.getByUsuario(usuario) != null) {
+                App.isGerente = false;
                 App.exibeMenuPrincipal();
             } else {
                 FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
@@ -90,6 +91,7 @@ public class LoginController implements Initializable {
                     GerenteDAO gerenteDAO = new GerenteDAO();
 
                     if (gerenteDAO.getByUsuarioFuncionario(usuario, funcionario) != null) {
+                        App.isGerente = true;
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Implementação");
                         alert.setHeaderText("Informação importante");
