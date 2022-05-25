@@ -232,7 +232,8 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
 
     @Override
     public void inserir(Usuario usuario) throws PersistenciaException {
-        String sql = "INSERT INTO CEFSA.USUARIO(NOME, USERNAME, SENHA, ULT_ACESSO, DATA_NASC, ENDERECO) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO CEFSA.USUARIO(NOME, USERNAME, SENHA, PERGUNTA_REC, RESPOSTA_REC, "
+                + "ULT_ACESSO, DATA_NASC, ENDERECO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         Connection connection = null;
         try {
@@ -241,12 +242,14 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
             pStatement.setString(1, usuario.getNome());
             pStatement.setString(2, usuario.getUserName());
             pStatement.setString(3, usuario.getSenha());
-            pStatement.setDate(4, java.sql.Date.valueOf(usuario.getUltimoAcesso().toLocalDate()));
-            pStatement.setDate(5, java.sql.Date.valueOf(usuario.getDataNasc().toLocalDate()));
-            pStatement.setString(6, String.valueOf(usuario.getEndereco()));
+            pStatement.setString(4, usuario.getPergunta());
+            pStatement.setString(5, usuario.getResposta());
+            pStatement.setDate(6, java.sql.Date.valueOf(usuario.getUltimoAcesso().toLocalDate()));
+            pStatement.setDate(7, java.sql.Date.valueOf(usuario.getDataNasc().toLocalDate()));
+            pStatement.setString(8, String.valueOf(usuario.getEndereco()));
             pStatement.execute();
 
-            try (ResultSet rs = pStatement.getGeneratedKeys()) {
+            try ( ResultSet rs = pStatement.getGeneratedKeys()) {
                 if (rs.next()) {
                     int id = rs.getInt(1);
                     usuario.setId(id);
@@ -279,13 +282,22 @@ public class UsuarioDAO implements GenericoDAO<Usuario> {
 
     @Override
     public void alterar(Usuario usuario) throws PersistenciaException {
-        String sql = "UPDATE USUARIO SET NOME = ?, USERNAME = ?, SENHA = ?, ULT_ACESSO = ?, DATA_NASC = ?, ENDERECO WHERE USERNAME = ?";
+        String sql = "UPDATE USUARIO SET "
+                + "NOME = ?, SENHA = ?, PERGUNTA_REC = ?, RESPOSTA_REC = ?, "
+                + "ULT_ACESSO = ?, DATA_NASC = ?, ENDERECO = ? WHERE USERNAME = ?";
 
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, usuario.getUserName());
+            pStatement.setString(1, usuario.getNome());
+            pStatement.setString(2, usuario.getSenha());
+            pStatement.setString(3, usuario.getPergunta());
+            pStatement.setString(4, usuario.getResposta());
+            pStatement.setDate(5, java.sql.Date.valueOf(usuario.getUltimoAcesso().toLocalDate()));
+            pStatement.setDate(6, java.sql.Date.valueOf(usuario.getDataNasc().toLocalDate()));
+            pStatement.setString(7, usuario.getEndereco());
+            pStatement.setString(8, usuario.getUserName());
             pStatement.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);

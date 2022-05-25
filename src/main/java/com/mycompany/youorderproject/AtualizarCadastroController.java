@@ -11,6 +11,7 @@ import com.mycompany.youorderproject.model.Cliente;
 import com.mycompany.youorderproject.model.Usuario;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -93,7 +94,7 @@ public class AtualizarCadastroController implements Initializable {
         txtResposta.setText(App.usuarioLogado.getResposta());
         txtEndereco.setText(App.usuarioLogado.getEndereco());
         dpNascimento.setValue(App.usuarioLogado.getDataNasc().toLocalDate());
-        
+
         lblErroSenha.setVisible(false);
         lblErroNome.setVisible(false);
         lblErroUsername.setVisible(false);
@@ -114,11 +115,10 @@ public class AtualizarCadastroController implements Initializable {
             lblErroNome.setVisible(true);
         }
 
-//        if (!txtNome.getText().matches("/[^0-9]/g")) {
+//        if (!txtNome.getText().matches("")) {
 //            lblErroNome.setText("O campo não pode conter números");
 //            lblErroNome.setVisible(true);
 //        }
-
         if (txtUsername.getText().isEmpty()) {
             lblErroUsername.setText("Preencher o campo");
             lblErroUsername.setVisible(true);
@@ -129,7 +129,7 @@ public class AtualizarCadastroController implements Initializable {
             lblErroSenha.setVisible(true);
         }
 
-        if (txtPergunta.getText().isEmpty() | txtPergunta.getText().isBlank()) {
+        if (txtPergunta.getText().isEmpty()) {
             lblErroPergunta.setText("Preencher o campo");
             lblErroPergunta.setVisible(true);
         }
@@ -148,23 +148,23 @@ public class AtualizarCadastroController implements Initializable {
             lblErroRestricaoAlimentar.setText("Selecione uma opção");
             lblErroRestricaoAlimentar.setVisible(true);
         }
-//
-//        Usuario usuarioAtualizado = new Usuario(
-//                1,
-//                txtNome.getText(),
-//                txtUsername.getText(),
-//                txtSenha.getText(),
-//                LocalDateTime.now(),
-//                dpNascimento.getValue().atStartOfDay(),
-//                txtEndereco.getText(),
-//                txtPergunta.getText(),
-//                txtResposta.getText());
-//
-//        usuarioDAO.alterar(usuarioAtualizado);
-//
-//        Cliente novoCliente = new Cliente(0, usuarioAtualizado, RestricaoAlimentar.values()[cbRestricao.getSelectionModel().getSelectedIndex()], 0);
-//
-//        clienteDAO.alterar(usuarioAtualizado);
+
+        if (usuarioDAO.buscarUsuario(txtUsername.getText())) {
+            Usuario usuarioAtualizado = new Usuario(
+                    1,
+                    txtNome.getText(),
+                    txtUsername.getText(),
+                    txtSenha.getText(),
+                    LocalDateTime.now(),
+                    dpNascimento.getValue().atStartOfDay(),
+                    txtEndereco.getText(),
+                    txtPergunta.getText(),
+                    txtResposta.getText());
+
+            usuarioDAO.alterar(usuarioAtualizado);
+        }
+//                    Cliente clienteAtualizado = new Cliente(0, usuarioAtualizado, RestricaoAlimentar.values()[cbRestricao.getSelectionModel().getSelectedIndex()], 0);
+//            clienteDAO.alterar(clienteAtualizado);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informação");

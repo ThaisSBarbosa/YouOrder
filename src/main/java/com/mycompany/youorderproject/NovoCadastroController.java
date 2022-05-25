@@ -112,7 +112,7 @@ public class NovoCadastroController implements Initializable {
             lblErroNome.setVisible(true);
         }
 
-//        if (!txtNome.getText().matches("/[^0-9]/g")) {
+//        if (!txtNome.getText().matches("")) {
 //            lblErroNome.setText("O campo não pode conter números");
 //            lblErroNome.setVisible(true);
 //        }
@@ -126,23 +126,30 @@ public class NovoCadastroController implements Initializable {
             lblErroUsername.setText("Username já existe");
             lblErroUsername.setVisible(true);
         }
+        
+//        LocalDate agora = LocalDate.of(2012, 6, 30);
+//        LocalDate data = dpNascimento.setValue(App.usuarioLogado.getDataNasc().toLocalDate());
+//        if(data.isAfter(agora)){
+//            lblErroDataNascimento.setText("Data inválida");
+//            lblErroDataNascimento.setVisible(true);
+//        }
 
         if (!txtSenha.getText().equals(txtConfirmarSenha.getText())) {
             lblErroSenha.setText("As senhas digitadas não conferem");
             lblErroSenha.setVisible(true);
         }
 
-        if (txtPergunta.getText().isEmpty() | txtPergunta.getText().isBlank()) {
+        if (txtPergunta.getText().isEmpty()) {
             lblErroPergunta.setText("Preencher o campo");
             lblErroPergunta.setVisible(true);
         }
 
-        if (txtResposta.getText().isEmpty() | txtResposta.getText().isBlank()) {
+        if (txtResposta.getText().isEmpty()) {
             lblErroResposta.setText("Preencher o campo");
             lblErroResposta.setVisible(true);
         }
 
-        if (txtEndereco.getText().isEmpty() | txtEndereco.getText().isBlank()) {
+        if (txtEndereco.getText().isEmpty()) {
             lblErroEndereco.setText("Preencher o campo");
             lblErroEndereco.setVisible(true);
         }

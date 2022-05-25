@@ -84,14 +84,14 @@ public class ClienteDAO implements GenericoDAO<Cliente> {
 
     @Override
     public void alterar(Cliente cliente) throws PersistenciaException {
-        /*String sql = "UPDATE EMPRESA.CARGO SET NOME=? WHERE ID_CARGO = ?";
+        String sql = "UPDATE CLIENTE SET ID_CLIENTE, REST_ALIMENTAR, QTD_PED_FIDELIDADE "
+                + "WHERE ID_USUARIO = ?";
 
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, usuario.getNome());
-            pStatement.setLong(2, usuario.getCodigo());
+            pStatement.setInt(1, cliente.getId());
             pStatement.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -105,7 +105,7 @@ public class ClienteDAO implements GenericoDAO<Cliente> {
             } catch (SQLException ex) {
                 Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }*/
+        }
     }
 
     @Override
