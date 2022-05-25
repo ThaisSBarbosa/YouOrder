@@ -41,6 +41,24 @@ public class PrecisoDeAjudaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Exibir();
+    }    
+
+    @FXML
+    private void btnEnviarOnMouseClicked(MouseEvent event) {
+        ConfirmarTopicoDeAjuda();
+    }
+
+    @FXML
+    private void btnVoltarOnMouseClicked(MouseEvent event) throws IOException {
+        VoltarMenuPrincipal();
+    }
+    
+    private void Exibir(){
+        BuscaTopicosAjuda();
+    }
+    
+    private void BuscaTopicosAjuda(){
         List<TipoAjuda> tiposAjuda = new ArrayList<>();
         TipoAjudaDAO tipoAjudaDAO = new TipoAjudaDAO();
         
@@ -52,18 +70,20 @@ public class PrecisoDeAjudaController implements Initializable {
         for (TipoAjuda ajuda : tiposAjuda) {
             cbAjuda.getItems().add(ajuda);
         }
-    }    
-
-    @FXML
-    private void btnEnviarOnMouseClicked(MouseEvent event) {
+    }
+    
+    private void VoltarMenuPrincipal(){
+        App.popRoot();
+    }
+    
+    private void SalvaSolicitacaoAjuda(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Preciso de Ajuda");
         alert.setHeaderText("Agora é só aguardar. Um atendente virá falar com você.");
         alert.showAndWait();
     }
-
-    @FXML
-    private void btnVoltarOnMouseClicked(MouseEvent event) throws IOException {
-        App.popRoot();
+    
+    private void ConfirmarTopicoDeAjuda(){
+        SalvaSolicitacaoAjuda();
     }
 }

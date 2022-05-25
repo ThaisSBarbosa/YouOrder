@@ -59,7 +59,7 @@ public class MenuPrincipalController implements Initializable {
 
     @FXML
     private void btnAjudaOnMouseClicked(MouseEvent event) throws IOException {
-        App.exibeTelaDeAjuda();
+        ExibirTelaDeAjuda();
     }
 
     @FXML
@@ -69,5 +69,9 @@ public class MenuPrincipalController implements Initializable {
     
     private void ExibirCardapio() throws IOException{
         App.exibeTelaDeCardapio();
+    }
+    
+    private void ExibirTelaDeAjuda() throws IOException{
+        App.exibeTelaDeAjuda();
     }
 }
