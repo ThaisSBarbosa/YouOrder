@@ -4,8 +4,12 @@
  */
 package com.mycompany.youorderproject;
 
+import com.mycompany.youorderproject.dao.ClienteDAO;
 import com.mycompany.youorderproject.dao.Conexao;
+import com.mycompany.youorderproject.dao.FuncionarioDAO;
+import com.mycompany.youorderproject.dao.GerenteDAO;
 import com.mycompany.youorderproject.dao.UsuarioDAO;
+import com.mycompany.youorderproject.model.Funcionario;
 import com.mycompany.youorderproject.model.Usuario;
 import java.io.IOException;
 import java.net.URL;
@@ -73,7 +77,27 @@ public class LoginController implements Initializable {
         Usuario usuario = usuarioDAO.validarLogin(txtLogin.getText(), txtSenha.getText());
         if (usuario != null) {
             App.usuarioLogado = usuario;
-            App.exibeMenuPrincipal();
+
+            ClienteDAO clienteDAO = new ClienteDAO();
+
+            if (clienteDAO.getByUsuario(usuario) != null) {
+                App.exibeMenuPrincipal();
+            } else {
+                FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+                Funcionario funcionario = funcionarioDAO.getByUsuario(usuario);
+
+                if (funcionario != null) {
+                    GerenteDAO gerenteDAO = new GerenteDAO();
+
+                    if (gerenteDAO.getByUsuarioFuncionario(usuario, funcionario) != null) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Implementação");
+                        alert.setHeaderText("Informação importante");
+                        alert.setContentText("Aqui deve ser a tela de gerente.");
+                        alert.showAndWait();
+                    }
+                }
+            }
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Erro");

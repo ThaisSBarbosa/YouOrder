@@ -12,8 +12,23 @@ import java.time.LocalDateTime;
  */
 public class Gerente extends Funcionario {
 
+    private int idGerente;
+
     public Gerente(LocalDateTime dataContratacao, int id, String nome, String userName,
-            String senha, LocalDateTime ultimoAcesso, LocalDateTime dataNasc, String endereco, String pergunta, String resposta) throws Exception{
+            String senha, LocalDateTime ultimoAcesso, LocalDateTime dataNasc, String endereco, String pergunta, String resposta) throws Exception {
         super(dataContratacao, id, nome, userName, senha, ultimoAcesso, dataNasc, endereco, pergunta, resposta);
+    }
+
+    public Gerente(int idGerente, Funcionario funcionario, Usuario usuario) throws Exception {
+        super(funcionario.getIdFuncionario(), funcionario.getDataContratacao(), usuario);
+        this.idGerente = idGerente;
+    }
+
+    public int getIdGerente() {
+        return idGerente;
+    }
+
+    public void setIdGerente(int id) {
+        this.idGerente = id;
     }
 }
