@@ -110,46 +110,16 @@ public class AtualizarCadastroController implements Initializable {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         ClienteDAO clienteDAO = new ClienteDAO();
 
-        if (txtNome.getText().isEmpty()) {
-            lblErroNome.setText("Preencher o campo");
-            lblErroNome.setVisible(true);
-        }
+        if (validaCampos()) {
+            lblErroSenha.setVisible(false);
+            lblErroNome.setVisible(false);
+            lblErroUsername.setVisible(false);
+            lblErroDataNascimento.setVisible(false);
+            lblErroPergunta.setVisible(false);
+            lblErroResposta.setVisible(false);
+            lblErroRestricaoAlimentar.setVisible(false);
+            lblErroEndereco.setVisible(false);
 
-//        if (!txtNome.getText().matches("")) {
-//            lblErroNome.setText("O campo não pode conter números");
-//            lblErroNome.setVisible(true);
-//        }
-        if (txtUsername.getText().isEmpty()) {
-            lblErroUsername.setText("Preencher o campo");
-            lblErroUsername.setVisible(true);
-        }
-
-        if (!txtSenha.getText().equals(txtConfirmarSenha.getText())) {
-            lblErroSenha.setText("As senhas digitadas não conferem");
-            lblErroSenha.setVisible(true);
-        }
-
-        if (txtPergunta.getText().isEmpty()) {
-            lblErroPergunta.setText("Preencher o campo");
-            lblErroPergunta.setVisible(true);
-        }
-
-        if (txtResposta.getText().isEmpty()) {
-            lblErroResposta.setText("Preencher o campo");
-            lblErroResposta.setVisible(true);
-        }
-
-        if (txtEndereco.getText().isEmpty()) {
-            lblErroEndereco.setText("Preencher o campo");
-            lblErroEndereco.setVisible(true);
-        }
-
-        if (cbRestricao.getSelectionModel().isSelected(0)) {
-            lblErroRestricaoAlimentar.setText("Selecione uma opção");
-            lblErroRestricaoAlimentar.setVisible(true);
-        }
-
-        if (usuarioDAO.buscarUsuario(txtUsername.getText())) {
             Usuario usuarioAtualizado = new Usuario(
                     1,
                     txtNome.getText(),
@@ -160,18 +130,78 @@ public class AtualizarCadastroController implements Initializable {
                     txtEndereco.getText(),
                     txtPergunta.getText(),
                     txtResposta.getText());
-
             usuarioDAO.alterar(usuarioAtualizado);
-        }
-//                    Cliente clienteAtualizado = new Cliente(0, usuarioAtualizado, RestricaoAlimentar.values()[cbRestricao.getSelectionModel().getSelectedIndex()], 0);
-//            clienteDAO.alterar(clienteAtualizado);
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Informação");
-        alert.setHeaderText("Atualizar cadastro de usuário");
-        alert.setContentText("As informações do usuário foram atualizadas com sucesso");
-        alert.showAndWait();
-        App.popRoot();
+//        Cliente clienteAtualizado = new Cliente(0, usuarioAtualizado, RestricaoAlimentar.values()[cbRestricao.getSelectionModel().getSelectedIndex()], 0);
+//        clienteDAO.alterar(clienteAtualizado);
+//      
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Informação");
+            alert.setHeaderText("Atualizar cadastro de usuário");
+            alert.setContentText("As informações do usuário foram atualizadas com sucesso");
+            alert.showAndWait();
+            App.popRoot();
+        }
+    }
+
+    public boolean validaCampos() {
+        boolean valido = true;
+
+        if (txtNome.getText().isEmpty()) {
+            lblErroNome.setText("Preencher o campo");
+            lblErroNome.setVisible(true);
+            valido = false;
+        }
+
+        if (txtUsername.getText().isEmpty()) {
+            lblErroUsername.setText("Preencher o campo");
+            lblErroUsername.setVisible(true);
+            valido = false;
+        }
+
+        if (!txtSenha.getText().equals(txtConfirmarSenha.getText())) {
+            lblErroSenha.setText("As senhas digitadas não conferem");
+            lblErroSenha.setVisible(true);
+            valido = false;
+        }
+
+        if (txtSenha.getText().isEmpty()) {
+            lblErroSenha.setText("Preencher o campo");
+            lblErroSenha.setVisible(true);
+            valido = false;
+        }
+
+        if (txtConfirmarSenha.getText().isEmpty()) {
+            lblErroSenha.setText("Preencher o campo");
+            lblErroSenha.setVisible(true);
+            valido = false;
+        }
+
+        if (txtPergunta.getText().isEmpty()) {
+            lblErroPergunta.setText("Preencher o campo");
+            lblErroPergunta.setVisible(true);
+            valido = false;
+        }
+
+        if (txtResposta.getText().isEmpty()) {
+            lblErroResposta.setText("Preencher o campo");
+            lblErroResposta.setVisible(true);
+            valido = false;
+        }
+
+        if (txtEndereco.getText().isEmpty()) {
+            lblErroEndereco.setText("Preencher o campo");
+            lblErroEndereco.setVisible(true);
+            valido = false;
+        }
+
+        if (cbRestricao.getSelectionModel().isSelected(0)) {
+            lblErroRestricaoAlimentar.setText("Selecione uma opção");
+            lblErroRestricaoAlimentar.setVisible(true);
+            valido = false;
+        }
+
+        return valido;
     }
 
     @FXML

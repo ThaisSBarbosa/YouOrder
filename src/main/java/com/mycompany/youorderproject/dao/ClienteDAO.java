@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class ClienteDAO implements GenericoDAO<Cliente> {
 
     @Override
@@ -61,7 +60,7 @@ public class ClienteDAO implements GenericoDAO<Cliente> {
             pStatement.setInt(2, cliente.getRestricaoAlimentar().ordinal());
             pStatement.setInt(3, cliente.getQtdPedidosFidelidade());
             pStatement.execute();
-            try (ResultSet rs = pStatement.getGeneratedKeys()) {
+            try ( ResultSet rs = pStatement.getGeneratedKeys()) {
                 if (rs.next()) {
                     int id = rs.getInt(1);
                     cliente.setIdCliente(id);
@@ -84,14 +83,15 @@ public class ClienteDAO implements GenericoDAO<Cliente> {
 
     @Override
     public void alterar(Cliente cliente) throws PersistenciaException {
-        String sql = "UPDATE CLIENTE SET ID_CLIENTE, REST_ALIMENTAR, QTD_PED_FIDELIDADE "
+        String sql = "UPDATE CLIENTE SET REST_ALIMENTAR, QTD_PED_FIDELIDADE "
                 + "WHERE ID_USUARIO = ?";
-
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setInt(1, cliente.getId());
+            pStatement.setInt(1, cliente.getRestricaoAlimentar().ordinal());
+            pStatement.setInt(2, cliente.getQtdPedidosFidelidade());
+            pStatement.setInt(3, cliente.getId());
             pStatement.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -160,8 +160,8 @@ public class ClienteDAO implements GenericoDAO<Cliente> {
         return usuario;*/
         return null;
     }
-    
-    public Cliente getByUsuario(Usuario usuario){
+
+    public Cliente getByUsuario(Usuario usuario) {
         String sql = "SELECT * FROM CLIENTE WHERE ID_USUARIO = ? FETCH FIRST 1 ROWS ONLY";
 
         Connection connection = null;
@@ -180,7 +180,7 @@ public class ClienteDAO implements GenericoDAO<Cliente> {
                         RestricaoAlimentar.values()[rs.getInt("REST_ALIMENTAR")],
                         rs.getInt("QTD_PED_FIDELIDADE"));
             }
-            
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -194,8 +194,7 @@ public class ClienteDAO implements GenericoDAO<Cliente> {
                 Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
         return null;
     }
 }
-
